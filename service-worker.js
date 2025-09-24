@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zain-technologies-v1.1';
+const CACHE_NAME = 'zain-technologies-v1.2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -9,7 +9,8 @@ const urlsToCache = [
   '/assets/css/styles.css',
   '/assets/js/main.js',
   '/assets/img/logo.svg',
-  '/manifest.webmanifest'
+  '/assets/img/apple-touch-icon.png',
+  '/manifest.webmanifest',
 ];
 
 // Install service worker
@@ -21,6 +22,24 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
   );
+  self.skipWaiting();
+});
+
+// Activate service worker
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+  return self.clients.claim();
 });
 
 // Fetch event
@@ -33,47 +52,9 @@ self.addEventListener('fetch', event => {
           return response;
         }
         
-        // Clone the request because it's a stream
-        const fetchRequest = event.request.clone();
-        
-        return fetch(fetchRequest).then(response => {
-          // Check if valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clone the response because it's a stream
-          const responseToCache = response.clone();
-          
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          
-          return response;
-        }).catch(() => {
-          // Fallback for offline scenarios
-          if (event.request.destination === 'document') {
-            return caches.match('/index.html');
-          }
-        });
-      })
-  );
-});
-
-// Activate service worker
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+        return fetch(event.request);
+      }
+    )
   );
 });
 

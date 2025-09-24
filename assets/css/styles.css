@@ -1,3 +1,68 @@
+/* Self-hosted fonts */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter-400.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/inter-500.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter-600.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-300.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/poppins-400.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/poppins-500.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/poppins-600.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/poppins-700.ttf') format('truetype');
+}
+
 :root {
   color-scheme: light;
   --color-bg: #ffffff;
@@ -20,6 +85,9 @@
   --color-btn-ghost-border: rgba(11, 29, 58, 0.15);
   --color-nav-toggle-bg: rgba(11, 29, 58, 0.08);
   --color-footer-bg: #091531;
+  --hero-bg: #f6f8ff;
+  --hero-glow-primary: rgba(255, 107, 44, 0.12);
+  --hero-glow-accent: rgba(11, 29, 58, 0.1);
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --font-display: "Poppins", "Inter", sans-serif;
   --radius-sm: 0.6rem;
@@ -28,25 +96,6 @@
   --shadow-sm: 0 10px 30px rgba(11, 29, 58, 0.08);
   --shadow-lg: 0 30px 60px rgba(11, 29, 58, 0.16);
   --max-width: 1200px;
-  --color-bg-dark: #060b19;
-  --color-surface-dark: #101b33;
-  --color-surface-alt-dark: #0c1629;
-  --color-surface-accent-dark: #0d1b38;
-  --color-surface-highlight-dark: #1b2f55;
-  --color-text-dark: #e5eaff;
-  --color-text-muted-dark: #9ba6c2;
-  --color-border-dark: rgba(120, 145, 190, 0.25);
-  --color-header-dark: rgba(7, 12, 24, 0.82);
-  --color-nav-surface-dark: #040915;
-  --color-nav-item-bg-dark: rgba(255, 255, 255, 0.08);
-  --color-nav-item-hover-bg-dark: rgba(255, 255, 255, 0.22);
-  --color-nav-link-dark: #f4f7ff;
-  --color-btn-ghost-bg-dark: rgba(18, 29, 52, 0.75);
-  --color-btn-ghost-border-dark: rgba(125, 148, 202, 0.38);
-  --color-nav-toggle-bg-dark: rgba(255, 255, 255, 0.12);
-  --color-footer-bg-dark: #040915;
-  --shadow-sm-dark: 0 18px 40px rgba(0, 0, 0, 0.45);
-  --shadow-lg-dark: 0 45px 90px rgba(0, 0, 0, 0.65);
 }
 
 * {
@@ -67,80 +116,61 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Explicit light theme class ensures proper light mode even with dark system preference */
-body.theme-light {
-  color-scheme: light;
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-alt: #f8f9fa;
-  --color-surface-accent: #0b1d3a;
-  --color-surface-highlight: #132a55;
-  --color-text: #1b2430;
-  --color-text-muted: #5a6472;
-  --color-accent: #0b1d3a;
-  --color-border: rgba(11, 29, 58, 0.12);
-  --color-header: rgba(255, 255, 255, 0.95);
-  --color-nav-surface: #0b1d3a;
-  --color-nav-link: #ffffff;
-  --color-nav-item-bg: rgba(255, 255, 255, 0.06);
-  --color-nav-item-hover-bg: rgba(255, 255, 255, 0.18);
-  --color-btn-ghost-bg: rgba(255, 255, 255, 0.9);
-  --color-btn-ghost-border: rgba(11, 29, 58, 0.15);
-  --color-nav-toggle-bg: rgba(11, 29, 58, 0.08);
-  --color-footer-bg: #091531;
-  --shadow-sm: 0 10px 30px rgba(11, 29, 58, 0.08);
-  --shadow-lg: 0 30px 60px rgba(11, 29, 58, 0.16);
-}
-
 /* Explicit dark theme class */
 body.theme-dark {
   color-scheme: dark;
-  --color-bg: var(--color-bg-dark);
-  --color-surface: var(--color-surface-dark);
-  --color-surface-alt: var(--color-surface-alt-dark);
-  --color-surface-accent: var(--color-surface-accent-dark);
-  --color-surface-highlight: var(--color-surface-highlight-dark);
-  --color-text: var(--color-text-dark);
-  --color-text-muted: var(--color-text-muted-dark);
+  --color-bg: #060b19;
+  --color-surface: #101b33;
+  --color-surface-alt: #0c1629;
+  --color-surface-accent: #0d1b38;
+  --color-surface-highlight: #1b2f55;
+  --color-text: #e5eaff;
+  --color-text-muted: #9ba6c2;
   --color-accent: #d7e3ff;
-  --color-border: var(--color-border-dark);
-  --color-header: var(--color-header-dark);
-  --color-nav-surface: var(--color-nav-surface-dark);
-  --color-nav-link: var(--color-nav-link-dark);
-  --color-nav-item-bg: var(--color-nav-item-bg-dark);
-  --color-nav-item-hover-bg: var(--color-nav-item-hover-bg-dark);
-  --color-btn-ghost-bg: var(--color-btn-ghost-bg-dark);
-  --color-btn-ghost-border: var(--color-btn-ghost-border-dark);
-  --color-nav-toggle-bg: var(--color-nav-toggle-bg-dark);
-  --color-footer-bg: var(--color-footer-bg-dark);
-  --shadow-sm: var(--shadow-sm-dark);
-  --shadow-lg: var(--shadow-lg-dark);
+  --color-border: rgba(120, 145, 190, 0.25);
+  --color-header: rgba(7, 12, 24, 0.82);
+  --color-nav-surface: #040915;
+  --color-nav-link: #f4f7ff;
+  --color-nav-item-bg: rgba(255, 255, 255, 0.08);
+  --color-nav-item-hover-bg: rgba(255, 255, 255, 0.22);
+  --color-btn-ghost-bg: rgba(18, 29, 52, 0.75);
+  --color-btn-ghost-border: rgba(125, 148, 202, 0.38);
+  --color-nav-toggle-bg: rgba(255, 255, 255, 0.12);
+  --color-footer-bg: #040915;
+  --shadow-sm: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 45px 90px rgba(0, 0, 0, 0.65);
+  --hero-bg: #030815;
+  --hero-glow-primary: rgba(255, 138, 76, 0.28);
+  --hero-glow-accent: rgba(9, 22, 45, 0.55);
 }
 
 /* Automatic dark theme only when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
-  body:not(.theme-light):not(.theme-dark) {
+  body {
     color-scheme: dark;
-    --color-bg: var(--color-bg-dark);
-    --color-surface: var(--color-surface-dark);
-    --color-surface-alt: var(--color-surface-alt-dark);
-    --color-surface-accent: var(--color-surface-accent-dark);
-    --color-surface-highlight: var(--color-surface-highlight-dark);
-    --color-text: var(--color-text-dark);
-    --color-text-muted: var(--color-text-muted-dark);
+    --color-bg: #060b19;
+    --color-surface: #101b33;
+    --color-surface-alt: #0c1629;
+    --color-surface-accent: #0d1b38;
+    --color-surface-highlight: #1b2f55;
+    --color-text: #e5eaff;
+    --color-text-muted: #9ba6c2;
     --color-accent: #d7e3ff;
-    --color-border: var(--color-border-dark);
-    --color-header: var(--color-header-dark);
-    --color-nav-surface: var(--color-nav-surface-dark);
-    --color-nav-link: var(--color-nav-link-dark);
-    --color-nav-item-bg: var(--color-nav-item-bg-dark);
-    --color-nav-item-hover-bg: var(--color-nav-item-hover-bg-dark);
-    --color-btn-ghost-bg: var(--color-btn-ghost-bg-dark);
-    --color-btn-ghost-border: var(--color-btn-ghost-border-dark);
-    --color-nav-toggle-bg: var(--color-nav-toggle-bg-dark);
-    --color-footer-bg: var(--color-footer-bg-dark);
-    --shadow-sm: var(--shadow-sm-dark);
-    --shadow-lg: var(--shadow-lg-dark);
+    --color-border: rgba(120, 145, 190, 0.25);
+    --color-header: rgba(7, 12, 24, 0.82);
+    --color-nav-surface: #040915;
+    --color-nav-link: #f4f7ff;
+    --color-nav-item-bg: rgba(255, 255, 255, 0.08);
+    --color-nav-item-hover-bg: rgba(255, 255, 255, 0.22);
+    --color-btn-ghost-bg: rgba(18, 29, 52, 0.75);
+    --color-btn-ghost-border: rgba(125, 148, 202, 0.38);
+    --color-nav-toggle-bg: rgba(255, 255, 255, 0.12);
+    --color-footer-bg: #040915;
+    --shadow-sm: 0 18px 40px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 45px 90px rgba(0, 0, 0, 0.65);
+    --hero-bg: #030815;
+    --hero-glow-primary: rgba(255, 138, 76, 0.28);
+    --hero-glow-accent: rgba(9, 22, 45, 0.55);
   }
 }
 
@@ -422,14 +452,15 @@ a.btn,
   padding: 5rem 0 4rem;
   position: relative;
   overflow: hidden;
+  background: var(--hero-bg);
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 107, 44, 0.08), transparent 55%),
-    radial-gradient(circle at 80% 0%, rgba(11, 29, 58, 0.12), transparent 60%);
+  background: radial-gradient(circle at 20% 20%, var(--hero-glow-primary), transparent 55%),
+    radial-gradient(circle at 80% 0%, var(--hero-glow-accent), transparent 60%);
   z-index: -2;
 }
 
@@ -1580,4 +1611,43 @@ address {
   .testimonial {
     padding: 1.5rem;
   }
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 44, 0.4);
+}
+
+.back-to-top:focus {
+  outline: 2px solid rgba(255, 107, 44, 0.5);
+  outline-offset: 2px;
 }

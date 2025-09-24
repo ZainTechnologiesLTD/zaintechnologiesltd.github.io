@@ -13,18 +13,38 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
   <link rel="apple-touch-icon" sizes="256x256" href="assets/img/apple-touch-icon.png" />
   <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zain Technologies Ltd.",
+      "url": "https://zaintechnologiesltd.github.io",
+      "logo": "https://zaintechnologiesltd.github.io/assets/img/logo.svg",
+      "description": "Enterprise-grade technology partner delivering AI, infrastructure, and immersive solutions for healthcare, government, and enterprise sectors.",
+      "foundingDate": "2023",
+      "industry": ["Information Technology", "Artificial Intelligence", "Cloud Computing"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BD"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@zain-technologies.com",
+        "contactType": "Customer Service"
+      },
+      "sameAs": [
+        "https://github.com/zaintechnologiesltd"
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-nav>
       <div class="container header-inner">
         <a class="brand" href="index.html">
-          <img src="assets/img/logo.svg" alt="Zain Technologies Ltd." width="140" height="48" />
-          <span>Zain Technologies Ltd.</span>
+          <img src="assets/img/logo.svg" alt="Zain Technologies Ltd. logo" width="140" height="48" />
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
           <span class="nav-toggle__line"></span>
@@ -377,6 +397,10 @@
         </div>
       </div>
     </footer>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
 
     <script src="assets/js/zaindb.js" defer></script>
     <script src="assets/js/analytics.js" defer></script>

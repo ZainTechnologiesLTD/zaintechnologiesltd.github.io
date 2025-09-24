@@ -24,10 +24,12 @@ The site is structured as a multi-page corporate experience optimised for GitHub
 
 ### Assets & Components
 
-- `assets/css/styles.css` — Global styles using CSS custom properties, fluid type, theme tokens, and utility helpers.
-- `assets/js/main.js` — Handles mobile navigation, smooth in-page scrolling, accordion interactions, form enhancements, and theme persistence.
+- `assets/css/styles.css` — Global styles using CSS custom properties, fluid type, theme tokens, and utility helpers. Includes self-hosted fonts.
+- `assets/js/main.js` — Handles mobile navigation, smooth in-page scrolling, accordion interactions, form enhancements, theme persistence, and back-to-top functionality.
 - `assets/img/` — Logo SVG, Apple touch icon, and decorative illustrations.
+- `assets/fonts/` — Self-hosted Poppins and Inter font files for improved performance and privacy.
 - `manifest.webmanifest` — Web app manifest with icons and brand metadata for installable experiences.
+- Structured data (JSON-LD) for improved SEO and search engine understanding.
 
 ### Content Sources
 

@@ -75,11 +75,14 @@
   const closeNav = () => {
     nav?.classList.remove('is-open');
     toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.classList.remove('is-active');
   };
 
   toggle?.addEventListener('click', () => {
     const isOpen = nav?.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    const expanded = Boolean(isOpen);
+    toggle.setAttribute('aria-expanded', String(expanded));
+    toggle.classList.toggle('is-active', expanded);
   });
 
   nav?.querySelectorAll('a').forEach((link) => {

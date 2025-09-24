@@ -116,6 +116,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.theme-light {
+  color-scheme: light;
+}
+
 /* Explicit dark theme class */
 body.theme-dark {
   color-scheme: dark;
@@ -146,7 +150,7 @@ body.theme-dark {
 
 /* Automatic dark theme only when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
-  body {
+  body:not(.theme-light) {
     color-scheme: dark;
     --color-bg: #060b19;
     --color-surface: #101b33;
@@ -381,6 +385,18 @@ a.btn,
   background: var(--color-accent);
   margin: 0 auto;
   transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.is-active .nav-toggle__line:nth-of-type(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle.is-active .nav-toggle__line:nth-of-type(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active .nav-toggle__line:nth-of-type(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .site-nav {

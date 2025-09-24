@@ -1,0 +1,23 @@
+{
+  "name": "Zain Technologies Ltd.",
+  "short_name": "ZainTech",
+  "description": "Enterprise-grade technology partner delivering AI, infrastructure, and immersive solutions.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1d3a",
+  "theme_color": "#0b1d3a",
+  "icons": [
+    {
+      "src": "assets/img/apple-touch-icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

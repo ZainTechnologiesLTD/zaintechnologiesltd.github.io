@@ -1,0 +1,19 @@
+<svg width="240" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Zain Technologies Ltd. Logo</title>
+  <desc id="desc">Stylised Z and T monogram with technology accents in navy and orange.</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b2c" />
+      <stop offset="100%" stop-color="#f7441d" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="80" rx="14" fill="#0b1d3a" />
+  <g transform="translate(24 16)">
+    <path d="M0 40 L28 0 H60 L32 40 H0Z" fill="#ff6b2c" />
+    <circle cx="46" cy="12" r="5" fill="url(#grad)" />
+    <rect x="72" y="0" width="20" height="40" fill="#ffffff" rx="4" />
+    <rect x="72" y="18" width="60" height="8" fill="#ff6b2c" rx="4" />
+    <rect x="116" y="0" width="16" height="40" fill="#ffffff" rx="4" />
+  </g>
+  <text x="120" y="64" text-anchor="middle" font-family="'Poppins', sans-serif" font-size="18" fill="#ffffff">Zain Technologies Ltd.</text>
+</svg>

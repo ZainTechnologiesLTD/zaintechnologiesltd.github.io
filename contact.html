@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact | Zain Technologies Ltd.</title>
+    <meta name="description" content="Connect with Zain Technologies Ltd. for enterprise technology partnerships, sales enquiries, and support." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact · Zain Technologies Ltd." />
+    <meta property="og:description" content="Reach Zain Technologies Ltd. for sales, partnerships, careers, and media enquiries." />
+    <meta property="og:image" content="assets/img/logo.svg" />
+  <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg" />
+  <link rel="apple-touch-icon" sizes="256x256" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" data-nav>
+      <div class="container header-inner">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="Zain Technologies Ltd." width="140" height="48" />
+          <span>Zain Technologies Ltd.</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav class="site-nav" id="primary-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Solutions</a></li>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="contact.html" class="is-active">Contact</a></li>
+          </ul>
+          <div class="nav-cta">
+            <button class="btn btn--ghost btn--icon" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark mode" title="Switch to dark mode">
+              <span class="theme-toggle__icon" aria-hidden="true">🌗</span>
+              <span class="theme-toggle__label" aria-hidden="true">Dark mode</span>
+            </button>
+            <a class="btn btn--primary" href="#enquiries">Talk to us</a>
+            <a class="btn btn--ghost" href="tel:+880000000000">+880 (0) XXX-XXXXXX</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero">
+        <div class="container narrow">
+          <p class="eyebrow">Let’s collaborate</p>
+          <h1>We’d love to understand your mission and explore how we can help.</h1>
+          <p class="lead">Reach out to our team for enterprise engagements, partnerships, or media enquiries. We respond within two business days.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="hq-heading">
+        <div class="container two-column">
+          <div>
+            <h2 id="hq-heading">Global presence</h2>
+            <p>Our teams operate from Bangladesh with delivery hubs and partner networks across MENA and APAC.</p>
+            <div class="office">
+              <h3>Dhaka · Headquarters</h3>
+              <address>
+                Zain Technologies Ltd.<br />
+                Registered Office<br />
+                Dhaka, Bangladesh
+              </address>
+              <ul class="profile-links">
+                <li><a href="mailto:hello@zain-technologies.com">hello@zain-technologies.com</a></li>
+                <li><a href="tel:+880000000000">+880 (0) XXX-XXXXXX</a></li>
+              </ul>
+            </div>
+            <div class="office">
+              <h3>Regional Engagements</h3>
+              <p>We support clients in Riyadh, Doha, Dubai, Kuala Lumpur, and Singapore through strategic partners and onsite squads.</p>
+            </div>
+          </div>
+          <div class="card card--map" aria-hidden="true">
+            <p>Interactive map coming soon.</p>
+            <div class="map-placeholder"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="enquiries" aria-labelledby="enquiry-heading">
+        <div class="container two-column">
+          <div>
+            <h2 id="enquiry-heading">Send an enquiry</h2>
+            <p>Share a few details about your project. Our experts will reach out with the next steps.</p>
+            <form class="form" aria-label="Contact form">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" placeholder="name@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="company">Organisation</label>
+                <input id="company" name="company" type="text" placeholder="Company or institution" />
+              </div>
+              <div class="form-group">
+                <label for="interest">What can we help with?</label>
+                <select id="interest" name="interest">
+                  <option>Digital product build</option>
+                  <option>AI &amp; analytics</option>
+                  <option>Infrastructure &amp; cybersecurity</option>
+                  <option>Managed services</option>
+                  <option>Partnership enquiry</option>
+                  <option>Media or speaking</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Project overview</label>
+                <textarea id="message" name="message" rows="4" placeholder="Share goals, timelines, or challenges"></textarea>
+              </div>
+              <button class="btn btn--primary" type="submit">Submit enquiry</button>
+              <p class="form-disclaimer">By submitting this form you consent to being contacted about Zain Technologies Ltd. services. We respect your privacy and do not share data without consent.</p>
+            </form>
+          </div>
+          <aside class="card">
+            <h3>Direct contacts</h3>
+            <ul class="profile-links">
+              <li>Enterprise Sales — <a href="mailto:sales@zain-technologies.com">sales@zain-technologies.com</a></li>
+              <li>Partnerships — <a href="mailto:partners@zain-technologies.com">partners@zain-technologies.com</a></li>
+              <li>Careers — <a href="mailto:careers@zain-technologies.com">careers@zain-technologies.com</a></li>
+              <li>Media — <a href="mailto:media@zain-technologies.com">media@zain-technologies.com</a></li>
+            </ul>
+            <p><strong>Support hours:</strong> Sunday – Thursday · 09:00 – 18:00 BST</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="compliance-heading">
+        <div class="container two-column">
+          <div>
+            <h2 id="compliance-heading">Compliance &amp; partnerships</h2>
+            <p>We operate under ISO-aligned controls, maintain NDAs for sensitive engagements, and partner with regional system integrators, research institutes, and regulatory bodies.</p>
+          </div>
+          <div class="card">
+            <h3>Vendors &amp; technologies</h3>
+            <p>Certified partnerships with Cisco, Juniper, Huawei, Palo Alto Networks, and Fortinet alongside cloud alliances across AWS, Azure, and GCP.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--accent" aria-labelledby="cta-heading">
+        <div class="container cta-banner">
+          <div>
+            <h2 id="cta-heading">Ready for a capabilities briefing?</h2>
+            <p>We’ll assemble the right specialists for your sector and demonstrate relevant accelerators.</p>
+          </div>
+          <a class="btn btn--light" href="mailto:hello@zain-technologies.com">Email our team</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="index.html">
+            <img src="assets/img/logo.svg" alt="Zain Technologies Ltd." width="120" height="40" />
+          </a>
+          <p>Connecting Ideas · Empowering Progress</p>
+          <p class="footer-meta">© <span data-year></span> Zain Technologies Ltd. All rights reserved.</p>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Solutions</a></li>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="contact.html" class="is-active">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="mailto:hello@zain-technologies.com">hello@zain-technologies.com</a></li>
+            <li><a href="https://www.linkedin.com/company/zain-technologies" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://twitter.com/zain_tech" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Visit</h3>
+          <address>
+            Registered Office<br />
+            Dhaka, Bangladesh
+          </address>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>

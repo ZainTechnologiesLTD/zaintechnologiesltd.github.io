@@ -3,156 +3,646 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zain Technologies Ltd. - Comprehensive Technology Solutions Hub</title>
-    <meta name="description" content="Zain Technologies Ltd. - Leading technology solutions provider specializing in cybersecurity, AI, healthcare technology, and enterprise solutions across Bangladesh, MENA & APAC regions.">
-    <meta name="keywords" content="technology solutions, cybersecurity, artificial intelligence, healthcare technology, enterprise solutions, SOC operations, IT infrastructure, software development, Bangladesh">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ZainTechnologiesLTD.github.io/">
-    <meta property="og:title" content="Zain Technologies Ltd. - Comprehensive Technology Solutions Hub">
-    <meta property="og:description" content="Leading technology solutions provider specializing in cybersecurity, AI, healthcare technology, and enterprise solutions.">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ZainTechnologiesLTD.github.io/">
-    <meta property="twitter:title" content="Zain Technologies Ltd. - Comprehensive Technology Solutions Hub">
-    <meta property="twitter:description" content="Leading technology solutions provider specializing in cybersecurity, AI, healthcare technology, and enterprise solutions.">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>🏢</text></svg>">
+    <title>Zain Technologies Ltd - Innovative Tech Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --darker-bg: #020617;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: rgba(59, 130, 246, 0.1);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-brand: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1e40af 100%);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --backdrop-blur: blur(16px);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%), linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-brand);
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-2xl), 0 0 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Client Portal Section */
+        .portal-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portal-card {
+            background: var(--dark-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-3px);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark-bg);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hidden sections for SPA behavior */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        #home.active {
+            display: block;
+        }
+
+        /* Modern Utility Classes */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--border-color);
+        }
+
+        .shadow-glow {
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .gradient-text {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            padding: 1px;
+            background: var(--gradient-brand);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        /* Enhanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: var(--shadow-lg), 0 0 20px rgba(37, 99, 235, 0.3); }
+            50% { box-shadow: var(--shadow-xl), 0 0 30px rgba(37, 99, 235, 0.5); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <div class="logo-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <div class="logo-text">
-                    <h2>Zain Technologies Ltd.</h2>
-                    <span class="logo-tagline">Technology Solutions Hub</span>
-                </div>
-            </div>
+            <div class="logo">Zain Technologies</div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#leadership">Leadership</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                <li><a href="#services" class="nav-link" onclick="showSection('services')">Services</a></li>
+                <li><a href="#portal" class="nav-link" onclick="showSection('portal')">Client Portal</a></li>
+                <li><a href="#about" class="nav-link" onclick="showSection('about')">About</a></li>
+                <li><a href="#contact" class="nav-link" onclick="showSection('contact')">Contact</a></li>
             </ul>
-            <div class="nav-buttons">
-                <a href="#contact" class="btn btn-outline">Get Quote</a>
-                <a href="#services" class="btn btn-primary">Our Services</a>
-            </div>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-grid"></div>
-            <div class="hero-particles"></div>
-        </div>
-        <div class="hero-container">
+    <!-- Home Section -->
+    <section id="home" class="section-content active">
+        <div class="hero">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Established under The Companies Act, 1994</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="gradient-text">Comprehensive Technology</span><br>
-                    <span class="gradient-text-secondary">Solutions Hub</span>
-                </h1>
-                <p class="hero-description">
-                    Zain Technologies Ltd. delivers cutting-edge cybersecurity, artificial intelligence, 
-                    healthcare technology, and enterprise solutions across Bangladesh, MENA & APAC regions. 
-                    Your trusted partner for digital transformation and technological excellence.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <h3>50+</h3>
-                        <p>Enterprise Clients</p>
-                    </div>
-                    <div class="stat">
-                        <h3>18+</h3>
-                        <p>Healthcare Facilities</p>
-                    </div>
-                    <div class="stat">
-                        <h3>500+</h3>
-                        <p>Endpoints Secured</p>
-                    </div>
-                    <div class="stat">
-                        <h3>99.9%</h3>
-                        <p>Uptime SLA</p>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary btn-large">
-                        <i class="fas fa-rocket"></i>
-                        Explore Solutions
-                    </a>
-                    <a href="#contact" class="btn btn-outline btn-large">
-                        <i class="fas fa-comments"></i>
-                        Business Consultation
-                    </a>
-                </div>
-                <div class="hero-certifications">
-                    <span>Certified & Compliant:</span>
-                    <div class="cert-badges">
-                        <span class="cert-badge">ISO 27001</span>
-                        <span class="cert-badge">SOC 2</span>
-                        <span class="cert-badge">HIPAA</span>
-                        <span class="cert-badge">NIST</span>
-                    </div>
+                <h1>Innovative Technology Solutions</h1>
+                <p>Empowering businesses with cutting-edge technology, custom software development, and comprehensive IT services. Your digital transformation partner.</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary animate-pulse-glow" onclick="showSection('services')">Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary" onclick="showSection('contact')">Get Started</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="tech-ecosystem">
-                    <div class="central-hub">
-                        <i class="fas fa-microchip"></i>
-                        <span>ZAIN TECH HUB</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card animate-float">
+                    <div class="service-icon">💻</div>
+                    <h3>Custom Software Development</h3>
+                    <p>Tailored software solutions designed to meet your specific business requirements and drive growth.</p>
+                    <ul class="service-features">
+                        <li>Web Applications</li>
+                        <li>Mobile App Development</li>
+                        <li>Desktop Applications</li>
+                        <li>API Development & Integration</li>
+                        <li>Legacy System Modernization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and migration services to enhance your business operations.</p>
+                    <ul class="service-features">
+                        <li>Cloud Migration</li>
+                        <li>Infrastructure as Code</li>
+                        <li>DevOps & CI/CD</li>
+                        <li>Cloud Security</li>
+                        <li>Backup & Disaster Recovery</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions to protect your digital assets and ensure compliance.</p>
+                    <ul class="service-features">
+                        <li>Security Audits</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance Management</li>
+                        <li>Identity & Access Management</li>
+                        <li>Security Training</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Analytics</h3>
+                    <p>Transform your data into actionable insights with advanced analytics and business intelligence.</p>
+                    <ul class="service-features">
+                        <li>Business Intelligence</li>
+                        <li>Data Visualization</li>
+                        <li>Predictive Analytics</li>
+                        <li>Machine Learning</li>
+                        <li>Data Integration</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">🛠️</div>
+                    <h3>IT Support & Maintenance</h3>
+                    <p>Reliable technical support and maintenance services to keep your systems running smoothly.</p>
+                    <ul class="service-features">
+                        <li>24/7 Technical Support</li>
+                        <li>System Monitoring</li>
+                        <li>Regular Maintenance</li>
+                        <li>Performance Optimization</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Strategic guidance and implementation to digitize your business processes and operations.</p>
+                    <ul class="service-features">
+                        <li>Process Automation</li>
+                        <li>Digital Strategy</li>
+                        <li>Technology Consulting</li>
+                        <li>Change Management</li>
+                        <li>Training & Adoption</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Portal Section -->
+    <section id="portal" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Client Portal</h2>
+            <div class="portal-section">
+                <h3>Access Your Services</h3>
+                <p>Secure access to project updates, documentation, support tickets, and service management tools.</p>
+                
+                <div class="portal-grid">
+                    <div class="portal-card" onclick="alert('Login functionality would be implemented here')">
+                        <div class="service-icon">👤</div>
+                        <h4>Client Login</h4>
+                        <p>Access your account and project dashboard</p>
                     </div>
-                    <div class="orbit-ring orbit-1">
-                        <div class="tech-node" data-service="cybersecurity">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Cybersecurity</span>
-                        </div>
-                        <div class="tech-node" data-service="ai">
-                            <i class="fas fa-robot"></i>
-                            <span>AI & ML</span>
-                        </div>
-                        <div class="tech-node" data-service="healthcare">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>HealthTech</span>
-                        </div>
+                    
+                    <div class="portal-card" onclick="alert('Support functionality would be implemented here')">
+                        <div class="service-icon">🎫</div>
+                        <h4>Support Tickets</h4>
+                        <p>Submit and track support requests</p>
                     </div>
-                    <div class="orbit-ring orbit-2">
-                        <div class="tech-node" data-service="cloud">
-                            <i class="fas fa-cloud"></i>
-                            <span>Cloud Solutions</span>
-                        </div>
-                        <div class="tech-node" data-service="devops">
-                            <i class="fas fa-code-branch"></i>
-                            <span>DevOps</span>
-                        </div>
-                        <div class="tech-node" data-service="networking">
-                            <i class="fas fa-network-wired"></i>
-                            <span>Networking</span>
-                        </div>
-                        <div class="tech-node" data-service="analytics">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Analytics</span>
-                        </div>
+                    
+                    <div class="portal-card" onclick="alert('Project management functionality would be implemented here')">
+                        <div class="service-icon">📋</div>
+                        <h4>Project Management</h4>
+                        <p>Track project progress and milestones</p>
+                    </div>
+                    
+                    <div class="portal-card" onclick="alert('Documentation functionality would be implemented here')">
+                        <div class="service-icon">📚</div>
+                        <h4>Documentation</h4>
+                        <p>Access technical documentation and guides</p>
                     </div>
                 </div>
             </div>
@@ -160,587 +650,31 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">About Zain Technologies</span>
-                <h2 class="section-title">Empowering Digital Transformation Through Innovation</h2>
-                <p class="section-description">
-                    Founded as a private limited company under The Companies Act, 1994, Zain Technologies Ltd. 
-                    serves as a comprehensive technology solutions hub, delivering enterprise-grade cybersecurity, 
-                    AI-powered platforms, and digital transformation services.
+    <section id="about" class="section-content">
+        <div class="section">
+            <h2 class="section-title">About Zain Technologies</h2>
+            <div class="portal-section">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Zain Technologies Ltd is a forward-thinking technology company dedicated to delivering innovative solutions that drive business success. With years of experience in the industry, we specialize in custom software development, cloud solutions, cybersecurity, and digital transformation services.
                 </p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Company Foundation</h3>
-                    <p>Established under The Companies Act, 1994 as a private limited company, headquartered in Bangladesh with global operations across MENA and APAC regions.</p>
-                </div>
                 
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-globe"></i>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>To empower businesses with cutting-edge technology solutions that enhance productivity, security, and growth potential.</p>
                     </div>
-                    <h3>Global Presence</h3>
-                    <p>Serving clients across Bangladesh, Kuwait, UAE, Saudi Arabia, Malaysia, and Singapore with comprehensive technology solutions and 24/7 support infrastructure.</p>
-                </div>
-                
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-award"></i>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">👁️</div>
+                        <h3>Our Vision</h3>
+                        <p>To be the leading technology partner for businesses seeking innovative and reliable digital transformation solutions.</p>
                     </div>
-                    <h3>Industry Excellence</h3>
-                    <p>Certified in ISO 27001, SOC 2, HIPAA, and NIST frameworks, delivering compliant and secure solutions for healthcare, finance, and enterprise sectors.</p>
-                </div>
-                
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Expert Team</h3>
-                    <p>Led by cybersecurity experts and enterprise architects, our multidisciplinary team combines technical excellence with strategic business acumen.</p>
-                </div>
-            </div>
-
-            <div class="mission-vision">
-                <div class="mv-card">
-                    <div class="mv-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Mission</h3>
-                    <p>To empower organizations with cutting-edge technology solutions that enhance security, drive innovation, and accelerate digital transformation while maintaining the highest standards of compliance and excellence.</p>
-                </div>
-                <div class="mv-card">
-                    <div class="mv-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Vision</h3>
-                    <p>To become the leading technology solutions hub in South Asia and MENA regions, recognized for cybersecurity excellence, AI innovation, and transformative healthcare technology solutions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Comprehensive Services</span>
-                <h2 class="section-title">Complete Technology Solutions Portfolio</h2>
-                <p class="section-description">
-                    From cybersecurity and AI to healthcare technology and enterprise solutions, 
-                    we deliver end-to-end services that drive business success and digital transformation.
-                </p>
-            </div>
-
-            <div class="services-tabs">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" data-tab="cybersecurity">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Cybersecurity</span>
-                    </button>
-                    <button class="tab-btn" data-tab="ai-ml">
-                        <i class="fas fa-robot"></i>
-                        <span>AI & Machine Learning</span>
-                    </button>
-                    <button class="tab-btn" data-tab="healthcare">
-                        <i class="fas fa-heartbeat"></i>
-                        <span>Healthcare Technology</span>
-                    </button>
-                    <button class="tab-btn" data-tab="enterprise">
-                        <i class="fas fa-building"></i>
-                        <span>Enterprise Solutions</span>
-                    </button>
-                    <button class="tab-btn" data-tab="development">
-                        <i class="fas fa-code"></i>
-                        <span>Software Development</span>
-                    </button>
-                    <button class="tab-btn" data-tab="infrastructure">
-                        <i class="fas fa-server"></i>
-                        <span>IT Infrastructure</span>
-                    </button>
-                </div>
-
-                <div class="tab-content">
-                    <!-- Cybersecurity Tab -->
-                    <div class="tab-pane active" id="cybersecurity">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <h3>24/7 SOC Operations</h3>
-                                <p>Comprehensive security operations center with real-time threat monitoring, incident response, and advanced threat hunting capabilities.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Real-time threat detection</li>
-                                    <li><i class="fas fa-check"></i> Incident response team</li>
-                                    <li><i class="fas fa-check"></i> Advanced threat hunting</li>
-                                    <li><i class="fas fa-check"></i> Compliance reporting</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-bug"></i>
-                                </div>
-                                <h3>Penetration Testing</h3>
-                                <p>Comprehensive vulnerability assessments and ethical hacking services to identify and address security weaknesses.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <h3>Network Security</h3>
-                                <p>Zero-trust architecture design, firewall management, and network segmentation for enterprise-grade security.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-certificate"></i>
-                                </div>
-                                <h3>Compliance Management</h3>
-                                <p>NIST, ISO 27001, HIPAA, SOC 2, and PCI DSS compliance assessment, implementation, and ongoing management.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI & ML Tab -->
-                    <div class="tab-pane" id="ai-ml">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <h3>Business Intelligence & Analytics</h3>
-                                <p>Advanced data analytics, predictive modeling, and business intelligence solutions powered by machine learning algorithms.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Predictive analytics</li>
-                                    <li><i class="fas fa-check"></i> Real-time dashboards</li>
-                                    <li><i class="fas fa-check"></i> Custom ML models</li>
-                                    <li><i class="fas fa-check"></i> Data visualization</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                                <h3>Process Automation</h3>
-                                <p>Robotic Process Automation (RPA) and intelligent workflow optimization to streamline business operations.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <h3>Custom AI Solutions</h3>
-                                <p>Tailored artificial intelligence applications for specific industry needs and business requirements.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <h3>Conversational AI</h3>
-                                <p>Intelligent chatbots and virtual assistants with natural language processing capabilities.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Healthcare Tab -->
-                    <div class="tab-pane" id="healthcare">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-hospital"></i>
-                                </div>
-                                <h3>ZAIN Hospital Management System</h3>
-                                <p>Complete HIPAA-compliant hospital management platform with multi-tenant architecture, EMR, billing, and analytics.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> HIPAA compliance</li>
-                                    <li><i class="fas fa-check"></i> Multi-tenant SaaS</li>
-                                    <li><i class="fas fa-check"></i> Real-time analytics</li>
-                                    <li><i class="fas fa-check"></i> Mobile applications</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-video"></i>
-                                </div>
-                                <h3>Telemedicine Platforms</h3>
-                                <p>Secure telehealth solutions with video consultations, remote monitoring, and patient engagement tools.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-stethoscope"></i>
-                                </div>
-                                <h3>Clinical Decision Support</h3>
-                                <p>AI-powered diagnostic assistance and clinical decision support systems for healthcare providers.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-clipboard-check"></i>
-                                </div>
-                                <h3>Healthcare Compliance</h3>
-                                <p>Automated compliance monitoring, audit trails, and regulatory reporting for healthcare organizations.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Enterprise Solutions Tab -->
-                    <div class="tab-pane" id="enterprise">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-sitemap"></i>
-                                </div>
-                                <h3>ERP System Implementation</h3>
-                                <p>Comprehensive enterprise resource planning solutions to optimize and streamline business operations across all departments.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Custom ERP development</li>
-                                    <li><i class="fas fa-check"></i> System integration</li>
-                                    <li><i class="fas fa-check"></i> Training & support</li>
-                                    <li><i class="fas fa-check"></i> Performance optimization</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </div>
-                                <h3>E-commerce Platforms</h3>
-                                <p>Complete online business solutions with payment gateways, inventory management, and customer analytics.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                                <h3>Business Process Optimization</h3>
-                                <p>Workflow analysis, process reengineering, and automation to improve operational efficiency.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <h3>Digital Transformation</h3>
-                                <p>Complete digital transformation consulting and implementation services for modern enterprises.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Software Development Tab -->
-                    <div class="tab-pane" id="development">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-laptop-code"></i>
-                                </div>
-                                <h3>Custom Application Development</h3>
-                                <p>Tailored software solutions built with modern technologies to meet specific business requirements and industry standards.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Python/Django backend</li>
-                                    <li><i class="fas fa-check"></i> React/Next.js frontend</li>
-                                    <li><i class="fas fa-check"></i> API development</li>
-                                    <li><i class="fas fa-check"></i> Database design</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <h3>Mobile App Development</h3>
-                                <p>Native and cross-platform mobile applications for iOS and Android with modern UI/UX design.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <h3>Web Platform Development</h3>
-                                <p>Modern, responsive websites and web applications with SEO optimization and performance tuning.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-code-branch"></i>
-                                </div>
-                                <h3>DevOps & CI/CD</h3>
-                                <p>Continuous integration and deployment pipelines with automated testing and infrastructure management.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- IT Infrastructure Tab -->
-                    <div class="tab-pane" id="infrastructure">
-                        <div class="service-grid">
-                            <div class="service-card featured">
-                                <div class="service-icon">
-                                    <i class="fas fa-cloud"></i>
-                                </div>
-                                <h3>Cloud Solutions & Migration</h3>
-                                <p>Complete cloud migration services for AWS, Azure, Google Cloud with optimization and cost management.</p>
-                                <ul class="service-features">
-                                    <li><i class="fas fa-check"></i> Cloud architecture design</li>
-                                    <li><i class="fas fa-check"></i> Migration planning</li>
-                                    <li><i class="fas fa-check"></i> Cost optimization</li>
-                                    <li><i class="fas fa-check"></i> 24/7 monitoring</li>
-                                </ul>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-network-wired"></i>
-                                </div>
-                                <h3>Network Design & Implementation</h3>
-                                <p>Enterprise network architecture with Cisco, Juniper, and Huawei equipment for optimal performance.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-server"></i>
-                                </div>
-                                <h3>Data Center Services</h3>
-                                <p>Colocation, hosting, and managed services with high availability and disaster recovery capabilities.</p>
-                            </div>
-                            <div class="service-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-life-ring"></i>
-                                </div>
-                                <h3>Disaster Recovery</h3>
-                                <p>Business continuity planning, backup solutions, and disaster recovery testing and implementation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solutions Section -->
-    <section id="solutions" class="solutions">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Industry Solutions</span>
-                <h2 class="section-title">Tailored Solutions for Every Industry</h2>
-                <p class="section-description">
-                    We deliver specialized technology solutions designed for specific industry requirements, 
-                    ensuring compliance, security, and optimal performance across all sectors.
-                </p>
-            </div>
-
-            <div class="solutions-grid">
-                <div class="solution-card healthcare-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Healthcare & Medical</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>HIPAA-compliant healthcare platforms with EMR, telemedicine, and clinical decision support systems.</p>
-                        <ul class="solution-features">
-                            <li>Hospital Management Systems</li>
-                            <li>Electronic Medical Records</li>
-                            <li>Telemedicine Platforms</li>
-                            <li>Medical Device Integration</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>18+ Hospitals</span>
-                            <span>3.2M+ Patient Records</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="solution-card fintech-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-university"></i>
-                        <h3>Financial Services & Fintech</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>Secure financial platforms with payment processing, risk management, and regulatory compliance.</p>
-                        <ul class="solution-features">
-                            <li>Payment Gateway Solutions</li>
-                            <li>Risk Management Systems</li>
-                            <li>Blockchain Integration</li>
-                            <li>Regulatory Compliance</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>PCI DSS Certified</span>
-                            <span>99.9% Uptime</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="solution-card manufacturing-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-industry"></i>
-                        <h3>Manufacturing & Industrial</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>Smart factory solutions with IoT integration, predictive maintenance, and operational analytics.</p>
-                        <ul class="solution-features">
-                            <li>Smart Factory Automation</li>
-                            <li>IoT Device Management</li>
-                            <li>Predictive Maintenance</li>
-                            <li>Supply Chain Optimization</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>Industrial IoT</span>
-                            <span>Real-time Analytics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="solution-card government-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-landmark"></i>
-                        <h3>Government & Public Sector</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>Digital governance platforms with citizen services, data security, and transparency initiatives.</p>
-                        <ul class="solution-features">
-                            <li>Digital Governance Platforms</li>
-                            <li>Citizen Service Portals</li>
-                            <li>Data Security & Privacy</li>
-                            <li>Transparency Dashboards</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>Government Grade</span>
-                            <span>High Security</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="solution-card education-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-graduation-cap"></i>
-                        <h3>Education & E-Learning</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>Comprehensive e-learning platforms with virtual classrooms, student management, and analytics.</p>
-                        <ul class="solution-features">
-                            <li>Learning Management Systems</li>
-                            <li>Virtual Classroom Solutions</li>
-                            <li>Student Analytics</li>
-                            <li>Assessment Platforms</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>Scalable Learning</span>
-                            <span>Interactive Content</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="solution-card retail-solution">
-                    <div class="solution-header">
-                        <i class="fas fa-shopping-bag"></i>
-                        <h3>Retail & E-Commerce</h3>
-                    </div>
-                    <div class="solution-content">
-                        <p>Complete e-commerce solutions with inventory management, customer analytics, and omnichannel support.</p>
-                        <ul class="solution-features">
-                            <li>E-commerce Platforms</li>
-                            <li>Inventory Management</li>
-                            <li>Customer Analytics</li>
-                            <li>Omnichannel Integration</li>
-                        </ul>
-                        <div class="solution-stats">
-                            <span>Multi-channel</span>
-                            <span>Real-time Insights</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="leadership" class="leadership">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Company Leadership</span>
-                <h2 class="section-title">Experienced Leadership Team</h2>
-                <p class="section-description">
-                    Our leadership combines deep technical expertise with strategic business acumen, 
-                    driving innovation and excellence across all technology domains.
-                </p>
-            </div>
-
-            <div class="leadership-grid">
-                <div class="leader-card chairman">
-                    <div class="leader-image">
-                        <img src="https://github.com/MehediHossain95.png" alt="MD. Mehedi Hossain">
-                        <div class="leader-overlay">
-                            <div class="social-links">
-                                <a href="https://github.com/MehediHossain95" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://linkedin.com/in/mehedi-hossain" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="leader-info">
-                        <h3>MD. Mehedi Hossain</h3>
-                        <span class="leader-title">Chairman & Cybersecurity Expert</span>
-                        <p class="leader-bio">
-                            Cybersecurity expert with 9+ years of experience in SOC operations, threat detection, 
-                            and network security. Leads the company's technology strategy and cybersecurity initiatives 
-                            across healthcare, fintech, and enterprise sectors.
-                        </p>
-                        <div class="leader-expertise">
-                            <span class="expertise-tag">SOC Operations</span>
-                            <span class="expertise-tag">Threat Hunting</span>
-                            <span class="expertise-tag">Network Security</span>
-                            <span class="expertise-tag">HIPAA Compliance</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="leader-card managing-director">
-                    <div class="leader-image">
-                        <img src="https://via.placeholder.com/300x300/4F46E5/FFFFFF?text=MA" alt="MD. Asad Ullah">
-                        <div class="leader-overlay">
-                            <div class="social-links">
-                                <a href="#" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="leader-info">
-                        <h3>MD. Asad Ullah</h3>
-                        <span class="leader-title">Managing Director & Enterprise Architect</span>
-                        <p class="leader-bio">
-                            Enterprise solutions architect and business development leader with extensive experience 
-                            in ERP implementations, cloud migrations, and digital transformation initiatives 
-                            for large-scale organizations.
-                        </p>
-                        <div class="leader-expertise">
-                            <span class="expertise-tag">Enterprise Architecture</span>
-                            <span class="expertise-tag">ERP Systems</span>
-                            <span class="expertise-tag">Cloud Solutions</span>
-                            <span class="expertise-tag">Business Development</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="company-structure">
-                <h3>Corporate Governance</h3>
-                <div class="governance-grid">
-                    <div class="governance-item">
-                        <i class="fas fa-gavel"></i>
-                        <h4>Legal Framework</h4>
-                        <p>Incorporated under The Companies Act, 1994 with full regulatory compliance and governance structure.</p>
-                    </div>
-                    <div class="governance-item">
-                        <i class="fas fa-chart-pie"></i>
-                        <h4>Financial Stability</h4>
-                        <p>Strong financial foundation ensuring stability and growth capacity for sustainable business operations.</p>
-                    </div>
-                    <div class="governance-item">
-                        <i class="fas fa-balance-scale"></i>
-                        <h4>Board Structure</h4>
-                        <p>Professional board governance with defined roles, responsibilities, and accountability frameworks.</p>
-                    </div>
-                    <div class="governance-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Compliance</h4>
-                        <p>Adherence to international standards including ISO 27001, SOC 2, HIPAA, and local regulatory requirements.</p>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">⭐</div>
+                        <h3>Our Values</h3>
+                        <p>Innovation, integrity, excellence, and customer satisfaction are at the core of everything we do.</p>
                     </div>
                 </div>
             </div>
@@ -748,215 +682,61 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Get In Touch</span>
-                <h2 class="section-title">Ready to Transform Your Business?</h2>
-                <p class="section-description">
-                    Contact our expert team for a comprehensive consultation on your technology needs. 
-                    We're here to help you achieve digital excellence and cybersecurity confidence.
-                </p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Business Inquiries</h3>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>General Business</h4>
-                                <a href="mailto:business@zain-technologies.com">business@zain-technologies.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Cybersecurity Consultation</h4>
-                                <a href="mailto:security@zain-technologies.com">security@zain-technologies.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Healthcare Solutions</h4>
-                                <a href="mailto:healthcare@zain-technologies.com">healthcare@zain-technologies.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Strategic Partnerships</h4>
-                                <a href="mailto:partnerships@zain-technologies.com">partnerships@zain-technologies.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-method emergency">
-                            <div class="method-icon">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>24/7 SOC Emergency</h4>
-                                <a href="mailto:soc@zain-technologies.com">soc@zain-technologies.com</a>
-                                <span class="emergency-note">Critical security incidents</span>
-                            </div>
-                        </div>
+    <section id="contact" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem;">Contact Us</h3>
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-
-                    <div class="company-details">
-                        <h4>Company Information</h4>
-                        <div class="detail-item">
-                            <i class="fas fa-building"></i>
-                            <span>Zain Technologies Ltd.</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Headquarters: Bangladesh</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Global Operations: MENA & APAC</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-certificate"></i>
-                            <span>ISO 27001, SOC 2, HIPAA Certified</span>
-                        </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                </div>
-
-                <div class="contact-form">
-                    <form id="businessInquiryForm" class="business-form">
-                        <div class="form-header">
-                            <h3>Business Inquiry Form</h3>
-                            <p>Tell us about your technology needs and we'll get back to you within 24 hours.</p>
-                        </div>
-
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="companyName">Company Name *</label>
-                                <input type="text" id="companyName" name="companyName" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="contactPerson">Contact Person *</label>
-                                <input type="text" id="contactPerson" name="contactPerson" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="industry">Industry Sector *</label>
-                                <select id="industry" name="industry" required>
-                                    <option value="">Select Industry</option>
-                                    <option value="healthcare">Healthcare & Medical</option>
-                                    <option value="finance">Financial Services & Fintech</option>
-                                    <option value="manufacturing">Manufacturing & Industrial</option>
-                                    <option value="government">Government & Public Sector</option>
-                                    <option value="education">Education & E-Learning</option>
-                                    <option value="retail">Retail & E-Commerce</option>
-                                    <option value="technology">Technology & Software</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="services">Required Services *</label>
-                                <div class="checkbox-group">
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="cybersecurity">
-                                        <span class="checkmark"></span>
-                                        Cybersecurity & SOC Operations
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="ai-ml">
-                                        <span class="checkmark"></span>
-                                        AI & Machine Learning
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="healthcare">
-                                        <span class="checkmark"></span>
-                                        Healthcare Technology
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="enterprise">
-                                        <span class="checkmark"></span>
-                                        Enterprise Solutions
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="development">
-                                        <span class="checkmark"></span>
-                                        Software Development
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="services[]" value="infrastructure">
-                                        <span class="checkmark"></span>
-                                        IT Infrastructure
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="projectDescription">Project Description *</label>
-                                <textarea id="projectDescription" name="projectDescription" rows="4" 
-                                    placeholder="Describe your technology requirements, current challenges, and objectives..." required></textarea>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="timeline">Project Timeline</label>
-                                <select id="timeline" name="timeline">
-                                    <option value="">Select Timeline</option>
-                                    <option value="immediate">Immediate (within 1 month)</option>
-                                    <option value="short">Short-term (1-3 months)</option>
-                                    <option value="medium">Medium-term (3-6 months)</option>
-                                    <option value="long">Long-term (6+ months)</option>
-                                    <option value="planning">Planning phase</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="budget">Budget Range</label>
-                                <select id="budget" name="budget">
-                                    <option value="">Select Budget Range</option>
-                                    <option value="under-50k">Under $50,000</option>
-                                    <option value="50k-100k">$50,000 - $100,000</option>
-                                    <option value="100k-250k">$100,000 - $250,000</option>
-                                    <option value="250k-500k">$250,000 - $500,000</option>
-                                    <option value="over-500k">Over $500,000</option>
-                                    <option value="discuss">Prefer to discuss</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                <i class="fas fa-paper-plane"></i>
-                                Submit Business Inquiry
-                            </button>
-                            <p class="form-note">
-                                We'll review your inquiry and respond within 24 hours with a detailed consultation proposal.
-                            </p>
-                        </div>
-                    </form>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interest</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="software-development">Custom Software Development</option>
+                            <option value="cloud-solutions">Cloud Solutions</option>
+                            <option value="cybersecurity">Cybersecurity</option>
+                            <option value="data-analytics">Data Analytics</option>
+                            <option value="it-support">IT Support & Maintenance</option>
+                            <option value="digital-transformation">Digital Transformation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary animate-pulse-glow">Send Message</button>
+                </form>
+                
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4>📧 Email</h4>
+                        <p>info@zaintechnologiesltd.com</p>
+                    </div>
+                    <div>
+                        <h4>📞 Phone</h4>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div>
+                        <h4>📍 Address</h4>
+                        <p>123 Tech Street<br>Innovation City, IC 12345</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -964,103 +744,126 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <i class="fas fa-building"></i>
-                            <h3>Zain Technologies Ltd.</h3>
-                        </div>
-                        <p class="footer-description">
-                            Comprehensive technology solutions provider specializing in cybersecurity, 
-                            AI, healthcare technology, and enterprise solutions across Bangladesh, MENA & APAC regions.
-                        </p>
-                        <div class="footer-certifications">
-                            <span>Certified:</span>
-                            <div class="cert-badges-footer">
-                                <span>ISO 27001</span>
-                                <span>SOC 2</span>
-                                <span>HIPAA</span>
-                                <span>NIST</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-services">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#services">Cybersecurity & SOC</a></li>
-                            <li><a href="#services">AI & Machine Learning</a></li>
-                            <li><a href="#services">Healthcare Technology</a></li>
-                            <li><a href="#services">Enterprise Solutions</a></li>
-                            <li><a href="#services">Software Development</a></li>
-                            <li><a href="#services">IT Infrastructure</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-industries">
-                        <h4>Industries</h4>
-                        <ul>
-                            <li><a href="#solutions">Healthcare & Medical</a></li>
-                            <li><a href="#solutions">Financial Services</a></li>
-                            <li><a href="#solutions">Manufacturing</a></li>
-                            <li><a href="#solutions">Government</a></li>
-                            <li><a href="#solutions">Education</a></li>
-                            <li><a href="#solutions">Retail & E-Commerce</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-contact">
-                        <h4>Quick Contact</h4>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:business@zain-technologies.com">business@zain-technologies.com</a>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <a href="mailto:security@zain-technologies.com">security@zain-technologies.com</a>
-                        </div>
-                        <div class="footer-contact-item emergency">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <a href="mailto:soc@zain-technologies.com">24/7 SOC Emergency</a>
-                        </div>
-                        <div class="footer-social">
-                            <h5>Follow Us</h5>
-                            <div class="social-links">
-                                <a href="https://github.com/ZainTechnologiesLTD" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://linkedin.com/company/zain-technologies" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://twitter.com/zain_tech" target="_blank">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <div class="footer-legal">
-                        <p>&copy; 2025 Zain Technologies Ltd. All rights reserved.</p>
-                        <p class="legal-note">
-                            Incorporated under The Companies Act, 1994
-                        </p>
-                    </div>
-                    <div class="footer-links">
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#leadership">Leadership</a>
-                        <a href="#contact">Contact</a>
-                        <a href="mailto:legal@zain-technologies.com">Legal</a>
-                    </div>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Zain Technologies Ltd</h3>
+                <p>Your trusted partner for innovative technology solutions and digital transformation.</p>
+                <p>© 2025 Zain Technologies Ltd. All rights reserved.</p>
             </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Software Development</a></li>
+                    <li><a href="#services">Cloud Solutions</a></li>
+                    <li><a href="#services">Cybersecurity</a></li>
+                    <li><a href="#services">Data Analytics</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#portal">Client Portal</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Built with modern web technologies | Privacy Policy | Terms of Service</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Single Page Application Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            event.target.reset();
+            
+            // In a real application, you would send this data to your server
+            console.log('Form data:', data);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.service-card, .portal-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+
+            elements.forEach(el => observer.observe(el));
+        };
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', observeElements);
+    </script>
 </body>
 </html>

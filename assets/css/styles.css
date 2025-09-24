@@ -117,6 +117,19 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.nav-open::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 14, 30, 0.5);
+  z-index: 98;
+}
+
 /* Explicit dark theme class */
 body.theme-dark {
   color-scheme: dark;
@@ -412,6 +425,7 @@ a.btn,
   border-left: 1px solid rgba(255, 255, 255, 0.06);
   transition: transform 0.3s ease;
   pointer-events: none;
+  z-index: 100;
 }
 
 .site-nav.is-open {
@@ -672,6 +686,22 @@ a.btn,
   gap: 1.5rem;
 }
 
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.industries-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.case-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.profile-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
 .card {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -912,12 +942,7 @@ a.btn,
   to { opacity: 1; transform: translateX(0); }
 }
 
-/* Enhanced Scroll Animation Classes */
-.animate-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
+/* Enhanced scroll animation states */
 .card, 
 .testimonial, 
 .faq-item, 
@@ -1567,7 +1592,7 @@ address {
     align-items: center;
     padding: 0;
     color: var(--color-accent);
-    transform: none !important;
+    transform: none;
     box-shadow: none;
     border-left: none;
     pointer-events: auto;
@@ -1625,18 +1650,6 @@ address {
   .section__intro {
     text-align: left;
     margin-bottom: 3.5rem;
-  }
-
-  .card-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .industries-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .profile-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .two-column {

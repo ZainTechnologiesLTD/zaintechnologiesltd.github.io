@@ -176,17 +176,85 @@ describe('Site interactions', () => {
       const navToggle = document.querySelector('[data-nav-toggle]');
       const nav = document.getElementById('primary-nav');
 
+      Object.defineProperty(window, 'innerWidth', {
+        value: 500,
+        configurable: true,
+        writable: true
+      });
+
       expect(nav.classList.contains('is-open')).toBe(false);
       expect(navToggle.classList.contains('is-active')).toBe(false);
+      expect(document.body.classList.contains('nav-open')).toBe(false);
 
       navToggle.dispatchEvent(new window.Event('click', { bubbles: true }));
       expect(nav.classList.contains('is-open')).toBe(true);
       expect(navToggle.classList.contains('is-active')).toBe(true);
       expect(navToggle.getAttribute('aria-expanded')).toBe('true');
+      expect(document.body.classList.contains('nav-open')).toBe(true);
 
       navToggle.dispatchEvent(new window.Event('click', { bubbles: true }));
       expect(nav.classList.contains('is-open')).toBe(false);
       expect(navToggle.classList.contains('is-active')).toBe(false);
+      expect(navToggle.getAttribute('aria-expanded')).toBe('false');
+      expect(document.body.classList.contains('nav-open')).toBe(false);
+    } finally {
+      cleanup();
+    }
+  });
+
+  it('closes mobile navigation when clicking outside the menu', () => {
+    const { window, document, cleanup } = mountDom();
+
+    try {
+      const navToggle = document.querySelector('[data-nav-toggle]');
+      const nav = document.getElementById('primary-nav');
+
+      Object.defineProperty(window, 'innerWidth', {
+        value: 500,
+        configurable: true,
+        writable: true
+      });
+
+      navToggle.dispatchEvent(new window.Event('click', { bubbles: true }));
+      expect(nav.classList.contains('is-open')).toBe(true);
+      expect(document.body.classList.contains('nav-open')).toBe(true);
+
+      document.body.dispatchEvent(new window.Event('click', { bubbles: true }));
+
+      expect(nav.classList.contains('is-open')).toBe(false);
+      expect(document.body.classList.contains('nav-open')).toBe(false);
+    } finally {
+      cleanup();
+    }
+  });
+
+  it('resets mobile navigation state when resizing to desktop', () => {
+    const { window, document, cleanup } = mountDom();
+
+    try {
+      const navToggle = document.querySelector('[data-nav-toggle]');
+      const nav = document.getElementById('primary-nav');
+
+      Object.defineProperty(window, 'innerWidth', {
+        value: 500,
+        configurable: true,
+        writable: true
+      });
+
+      navToggle.dispatchEvent(new window.Event('click', { bubbles: true }));
+      expect(nav.classList.contains('is-open')).toBe(true);
+      expect(document.body.classList.contains('nav-open')).toBe(true);
+
+      Object.defineProperty(window, 'innerWidth', {
+        value: 1024,
+        configurable: true,
+        writable: true
+      });
+
+      window.dispatchEvent(new window.Event('resize'));
+
+      expect(nav.classList.contains('is-open')).toBe(false);
+      expect(document.body.classList.contains('nav-open')).toBe(false);
       expect(navToggle.getAttribute('aria-expanded')).toBe('false');
     } finally {
       cleanup();

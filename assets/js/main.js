@@ -14,6 +14,7 @@
 
   const themeKey = 'ztl-theme-preference';
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const isMobile = () => window.innerWidth < 768;
 
   const getStoredTheme = () => {
     try {
@@ -76,6 +77,7 @@
     nav?.classList.remove('is-open');
     toggle?.setAttribute('aria-expanded', 'false');
     toggle?.classList.remove('is-active');
+    document.body.classList.remove('nav-open');
   };
 
   toggle?.addEventListener('click', () => {
@@ -83,18 +85,40 @@
     const expanded = Boolean(isOpen);
     toggle.setAttribute('aria-expanded', String(expanded));
     toggle.classList.toggle('is-active', expanded);
+    document.body.classList.toggle('nav-open', expanded && isMobile());
   });
 
   nav?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      if (window.innerWidth < 768) {
+      if (isMobile()) {
         closeNav();
       }
     });
   });
 
+  document.addEventListener('click', (event) => {
+    if (!nav?.classList.contains('is-open') || !isMobile()) {
+      return;
+    }
+
+    const target = event.target;
+    if (target instanceof Node) {
+      if (nav.contains(target) || toggle?.contains(target)) {
+        return;
+      }
+    }
+
+    closeNav();
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
+      closeNav();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
       closeNav();
     }
   });
@@ -120,6 +144,12 @@
   if (header) {
     let lastScroll = window.scrollY;
     window.addEventListener('scroll', () => {
+      if (nav?.classList.contains('is-open')) {
+        header.classList.remove('is-hidden');
+        lastScroll = window.scrollY;
+        return;
+      }
+
       const current = window.scrollY;
       if (current > lastScroll && current > 120) {
         header.classList.add('is-hidden');

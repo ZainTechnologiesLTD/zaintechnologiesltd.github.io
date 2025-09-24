@@ -44,10 +44,16 @@ class ZainDB {
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js';
       script.onload = async () => {
         try {
+          if (typeof window.initSqlJs !== 'function') {
+            throw new Error('sql.js loader is unavailable.');
+          }
+
           // Initialize SQL.js
           const SQL = await window.initSqlJs({
             locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
           });
+
+          window.SQL = SQL;
           resolve(SQL);
         } catch (error) {
           reject(error);

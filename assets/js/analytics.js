@@ -21,24 +21,48 @@ class ZainAnalytics {
   trackPageLoad() {
     // Core Web Vitals tracking
     if ('PerformanceObserver' in window) {
+      const supportedEntryTypes = Array.isArray(window.PerformanceObserver.supportedEntryTypes)
+        ? window.PerformanceObserver.supportedEntryTypes
+        : [];
+
+      const supportsEntryType = (type) => supportedEntryTypes.includes(type);
+
+      const createObserver = (type, handler) => {
+        if (!supportsEntryType(type)) {
+          console.debug(`PerformanceObserver entry type "${type}" not supported; skipping.`);
+          return null;
+        }
+
+        try {
+          const observer = new PerformanceObserver(handler);
+          observer.observe({ entryTypes: [type] });
+          return observer;
+        } catch (error) {
+          console.debug(`PerformanceObserver registration failed for "${type}".`, error);
+          return null;
+        }
+      };
+
       // Largest Contentful Paint
-      new PerformanceObserver((entryList) => {
+      createObserver('largest-contentful-paint', (entryList) => {
         const entries = entryList.getEntries();
         const lastEntry = entries[entries.length - 1];
+        if (!lastEntry) return;
         this.performance.lcp = lastEntry.startTime;
         this.sendMetric('lcp', lastEntry.startTime);
-      }).observe({ entryTypes: ['largest-contentful-paint'] });
+      });
 
       // First Input Delay
-      new PerformanceObserver((entryList) => {
+      createObserver('first-input', (entryList) => {
         const firstInput = entryList.getEntries()[0];
+        if (!firstInput) return;
         this.performance.fid = firstInput.processingStart - firstInput.startTime;
         this.sendMetric('fid', this.performance.fid);
-      }).observe({ entryTypes: ['first-input'] });
+      });
 
       // Cumulative Layout Shift
       let clsValue = 0;
-      new PerformanceObserver((entryList) => {
+      createObserver('layout-shift', (entryList) => {
         for (const entry of entryList.getEntries()) {
           if (!entry.hadRecentInput) {
             clsValue += entry.value;
@@ -46,7 +70,7 @@ class ZainAnalytics {
         }
         this.performance.cls = clsValue;
         this.sendMetric('cls', clsValue);
-      }).observe({ entryTypes: ['layout-shift'] });
+      });
     }
 
     // Page timing metrics

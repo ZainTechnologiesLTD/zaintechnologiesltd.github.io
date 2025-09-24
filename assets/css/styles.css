@@ -208,6 +208,7 @@ p {
   margin: 0 0 1em;
 }
 
+
 ul,
 ol {
   margin: 0 0 1.25em 1.25em;
@@ -492,6 +493,13 @@ a.btn,
 .benefit-card:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+.compliance-icon,
+.benefit-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .compliance-card h3,
@@ -1540,6 +1548,16 @@ address {
     display: none;
   }
 
+  .nav-toggle.is-active {
+    display: block;
+    position: fixed;
+    top: 1.2rem;
+    right: 1.25rem;
+    z-index: 101;
+    background: var(--color-nav-surface);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
   .site-nav {
     position: static;
     inset: auto;
@@ -1550,6 +1568,9 @@ address {
     padding: 0;
     color: var(--color-accent);
     transform: none !important;
+    box-shadow: none;
+    border-left: none;
+    pointer-events: auto;
   }
 
   .nav-list {

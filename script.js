@@ -1,761 +1,724 @@
-// Website JavaScript Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initializeNavigation();
-    initializeServiceTabs();
-    initializeContactForm();
-    initializeScrollAnimations();
-    initializeTechEcosystem();
-    initializeScrollToTop();
-    
-    console.log('Zain Technologies Ltd. website loaded successfully');
-});
+// Custom Interactive JavaScript - Zain Technologies
+// Modern web interactions and animations
 
-// Navigation functionality
-function initializeNavigation() {
-    const navbar = document.querySelector('.navbar');
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    
-    // Mobile menu toggle
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+class ZainTechnologies {
+    constructor() {
+        this.init();
+        this.setupEventListeners();
+        this.initAnimations();
+        this.initScrollEffects();
+        this.initParticleSystem();
+        this.initThemeSystem();
+        this.initInteractiveElements();
+    }
+
+    init() {
+        console.log('🚀 Zain Technologies - Innovation Redefined');
         
-        // Close menu when clicking on a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+        // Set up viewport variables
+        this.setViewportVariables();
+        window.addEventListener('resize', () => this.setViewportVariables());
+        
+        // Initialize cursor effects
+        this.initCustomCursor();
+        
+        // Preload animations
+        this.preloadAnimations();
+    }
+
+    setViewportVariables() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setupEventListeners() {
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                }
             });
         });
-    }
-    
-    // Navbar scroll effect
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        if (navbar) {
-            if (currentScrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
-            
-            // Hide/show navbar on scroll
-            if (currentScrollY > lastScrollY && currentScrollY > 500) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
-            }
-        }
-        
-        lastScrollY = currentScrollY;
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Active nav link highlighting
-    const sections = document.querySelectorAll('section[id]');
-    
-    function highlightActiveSection() {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.getBoundingClientRect().top + scrollY - 100;
-            const sectionId = section.getAttribute('id');
-            const correspondingNavLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                if (correspondingNavLink) {
-                    correspondingNavLink.classList.add('active');
-                }
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', highlightActiveSection);
-}
 
-// Service tabs functionality
-function initializeServiceTabs() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-    
-    if (tabButtons.length === 0 || tabPanes.length === 0) return;
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetTab = button.getAttribute('data-tab');
-            
-            // Remove active class from all buttons and panes
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabPanes.forEach(pane => pane.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding pane
-            button.classList.add('active');
-            const targetPane = document.getElementById(targetTab);
-            if (targetPane) {
-                targetPane.classList.add('active');
-                
-                // Trigger animation for service cards
-                const serviceCards = targetPane.querySelectorAll('.service-card');
-                serviceCards.forEach((card, index) => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(30px)';
-                    setTimeout(() => {
-                        card.style.transition = 'all 0.6s ease-out';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            }
-        });
-    });
-    
-    // Auto-rotate tabs (optional)
-    let currentTabIndex = 0;
-    const autoRotateInterval = 10000; // 10 seconds
-    
-    function rotateTab() {
-        if (tabButtons.length > 1) {
-            currentTabIndex = (currentTabIndex + 1) % tabButtons.length;
-            tabButtons[currentTabIndex].click();
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
         }
-    }
-    
-    // Uncomment to enable auto-rotation
-    // setInterval(rotateTab, autoRotateInterval);
-}
 
-// Contact form functionality
-function initializeContactForm() {
-    const form = document.getElementById('businessInquiryForm');
-    if (!form) return;
-    
-    const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton ? submitButton.innerHTML : '';
-    
-    // Form validation
-    function validateForm() {
-        const requiredFields = form.querySelectorAll('[required]');
-        let isValid = true;
-        
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
-                isValid = false;
-                field.classList.add('error');
-            } else {
-                field.classList.remove('error');
-            }
+        // Form submission
+        const contactForm = document.querySelector('.form-container');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => this.handleFormSubmit(e));
+        }
+
+        // Service cards hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => this.animateServiceCard(card, 'enter'));
+            card.addEventListener('mouseleave', () => this.animateServiceCard(card, 'leave'));
         });
-        
-        // Validate email format
-        const emailField = form.querySelector('input[type="email"]');
-        if (emailField && emailField.value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailField.value)) {
-                isValid = false;
-                emailField.classList.add('error');
-            } else {
-                emailField.classList.remove('error');
-            }
-        }
-        
-        // Validate at least one service is selected
-        const serviceCheckboxes = form.querySelectorAll('input[name="services[]"]');
-        const isServiceSelected = Array.from(serviceCheckboxes).some(checkbox => checkbox.checked);
-        if (!isServiceSelected) {
-            isValid = false;
-            const checkboxGroup = form.querySelector('.checkbox-group');
-            if (checkboxGroup) {
-                checkboxGroup.classList.add('error');
-            }
-        } else {
-            const checkboxGroup = form.querySelector('.checkbox-group');
-            if (checkboxGroup) {
-                checkboxGroup.classList.remove('error');
-            }
-        }
-        
-        return isValid;
-    }
-    
-    // Real-time validation
-    form.addEventListener('input', () => {
-        const field = event.target;
-        if (field.hasAttribute('required')) {
-            if (field.value.trim()) {
-                field.classList.remove('error');
-            }
-        }
-        
-        // Email validation
-        if (field.type === 'email' && field.value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailRegex.test(field.value)) {
-                field.classList.remove('error');
-            }
-        }
-    });
-    
-    // Service selection validation
-    const serviceCheckboxes = form.querySelectorAll('input[name="services[]"]');
-    serviceCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            const isServiceSelected = Array.from(serviceCheckboxes).some(cb => cb.checked);
-            const checkboxGroup = form.querySelector('.checkbox-group');
-            if (isServiceSelected && checkboxGroup) {
-                checkboxGroup.classList.remove('error');
-            }
+
+        // Portfolio items click
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', () => this.showProjectModal(item));
         });
-    });
-    
-    // Form submission
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        if (!validateForm()) {
-            showNotification('Please fill in all required fields correctly.', 'error');
-            return;
-        }
-        
-        // Show loading state
-        if (submitButton) {
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-        }
-        
-        try {
-            // Collect form data
-            const formData = new FormData(form);
-            const data = {};
-            
-            for (let [key, value] of formData.entries()) {
-                if (key === 'services[]') {
-                    if (!data.services) data.services = [];
-                    data.services.push(value);
-                } else {
-                    data[key] = value;
-                }
-            }
-            
-            // Here you would typically send the data to your backend
-            // For now, we'll simulate a successful submission
-            await simulateFormSubmission(data);
-            
-            showNotification('Thank you! Your business inquiry has been submitted successfully. We will contact you within 24 hours.', 'success');
-            form.reset();
-            
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showNotification('There was an error submitting your inquiry. Please try again or contact us directly.', 'error');
-        } finally {
-            // Restore button state
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            }
-        }
-    });
-    
-    // Simulate form submission (replace with actual API call)
-    function simulateFormSubmission(data) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate success/failure
-                if (Math.random() > 0.1) { // 90% success rate
-                    resolve(data);
-                } else {
-                    reject(new Error('Network error'));
-                }
-            }, 2000);
+
+        // Interactive buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.addEventListener('click', (e) => this.createRippleEffect(e));
         });
     }
-}
 
-// Notification system
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-            <span>${message}</span>
-            <button class="notification-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        z-index: 10000;
-        min-width: 300px;
-        max-width: 500px;
-        padding: 1rem;
-        background: ${type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#3B82F6'};
-        color: white;
-        border-radius: 0.75rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        transform: translateX(100%);
-        transition: transform 0.3s ease-out;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        line-height: 1.5;
-    `;
-    
-    notification.querySelector('.notification-content').style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    `;
-    
-    notification.querySelector('.notification-close').style.cssText = `
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 0.25rem;
-        margin-left: auto;
-        border-radius: 0.25rem;
-        transition: background-color 0.15s ease-in-out;
-    `;
-    
-    // Add to document
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Close functionality
-    const closeButton = notification.querySelector('.notification-close');
-    closeButton.addEventListener('click', () => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    });
-    
-    // Auto-close after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
-}
+    initAnimations() {
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-// Scroll animations
-function initializeScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.animate-on-scroll, .service-card, .solution-card, .about-card, .leader-card, .governance-item');
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                
-                // Stagger animation for cards in grids
-                const parent = entry.target.parentElement;
-                if (parent && (parent.classList.contains('service-grid') || 
-                              parent.classList.contains('solutions-grid') || 
-                              parent.classList.contains('about-grid'))) {
-                    const siblings = Array.from(parent.children);
-                    const index = siblings.indexOf(entry.target);
-                    entry.target.style.animationDelay = `${index * 0.1}s`;
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Animate children with stagger
+                    const children = entry.target.querySelectorAll('.service-card, .portfolio-item, .highlight-item, .visual-card');
+                    children.forEach((child, index) => {
+                        setTimeout(() => {
+                            child.classList.add('animate-in');
+                        }, index * 100);
+                    });
                 }
-            }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.services-section, .about-section, .portfolio-section, .contact-section').forEach(section => {
+            this.observer.observe(section);
         });
-    }, observerOptions);
-    
-    animatedElements.forEach(element => {
-        element.classList.add('animate-on-scroll');
-        observer.observe(element);
-    });
-    
-    // Parallax effect for hero background
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
+    }
+
+    initScrollEffects() {
+        let ticking = false;
+
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            heroBackground.style.transform = `translateY(${rate}px)`;
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    this.updateScrollEffects();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     }
-    
-    // Number counter animation
-    function animateCounters() {
-        const counters = document.querySelectorAll('.stat h3');
+
+    updateScrollEffects() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Parallax effect for hero shapes
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach((shape, index) => {
+            const speed = (index + 1) * 0.1;
+            const yPos = -(scrollY * speed);
+            shape.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+
+        // Update navigation background opacity
+        const nav = document.querySelector('.nav-container');
+        const opacity = Math.min(scrollY / 100, 0.95);
+        nav.style.background = `rgba(26, 31, 58, ${opacity})`;
+
+        // Show/hide scroll indicator
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.style.opacity = scrollY > 100 ? '0' : '1';
+        }
+
+        // Active navigation link based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        
+        let currentSection = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    initParticleSystem() {
+        // Create floating particles in hero section
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+
+        const particleCount = 20;
+        const particles = [];
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: rgba(99, 102, 241, 0.5);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 1;
+            `;
+            
+            // Random initial position
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            
+            heroSection.appendChild(particle);
+            particles.push({
+                element: particle,
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 3 + 1
+            });
+        }
+
+        // Animate particles
+        const animateParticles = () => {
+            particles.forEach(particle => {
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+                
+                // Wrap around screen
+                if (particle.x > window.innerWidth) particle.x = 0;
+                if (particle.x < 0) particle.x = window.innerWidth;
+                if (particle.y > window.innerHeight) particle.y = 0;
+                if (particle.y < 0) particle.y = window.innerHeight;
+                
+                particle.element.style.left = particle.x + 'px';
+                particle.element.style.top = particle.y + 'px';
+                particle.element.style.width = particle.size + 'px';
+                particle.element.style.height = particle.size + 'px';
+            });
+            
+            requestAnimationFrame(animateParticles);
+        };
+        
+        animateParticles();
+    }
+
+    initThemeSystem() {
+        // Dynamic theme based on time and user preference
+        const hour = new Date().getHours();
+        let theme = 'dark'; // Default theme
+        
+        // Auto theme based on time (keeping it dark for tech feel)
+        if (hour >= 6 && hour < 18) {
+            document.documentElement.setAttribute('data-theme', 'dark-day');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark-night');
+        }
+
+        // Add theme toggle functionality
+        const createThemeToggle = () => {
+            const themeToggle = document.createElement('button');
+            themeToggle.innerHTML = '🌓';
+            themeToggle.className = 'theme-toggle';
+            themeToggle.style.cssText = `
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: var(--bg-glass);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: var(--text-primary);
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+                transition: all 0.3s ease;
+                transform: translateY(-50%);
+            `;
+            
+            document.body.appendChild(themeToggle);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark-day' ? 'dark-night' : 'dark-day';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                
+                // Add click animation
+                themeToggle.style.transform = 'translateY(-50%) scale(0.9)';
+                setTimeout(() => {
+                    themeToggle.style.transform = 'translateY(-50%) scale(1)';
+                }, 150);
+            });
+        };
+        
+        createThemeToggle();
+    }
+
+    initCustomCursor() {
+        // Create custom cursor for desktop
+        if (window.innerWidth > 768) {
+            const cursor = document.createElement('div');
+            cursor.className = 'custom-cursor';
+            cursor.style.cssText = `
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                background: var(--primary-color);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                mix-blend-mode: difference;
+                transition: transform 0.1s ease;
+                transform: translate(-50%, -50%);
+            `;
+            
+            document.body.appendChild(cursor);
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            // Cursor interactions
+            document.querySelectorAll('a, button, .service-card, .portfolio-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+                    cursor.style.background = 'var(--accent-color)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursor.style.background = 'var(--primary-color)';
+                });
+            });
+        }
+    }
+
+    initInteractiveElements() {
+        // Add interactive glow effects
+        document.querySelectorAll('.service-card, .portfolio-item, .visual-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', x + 'px');
+                card.style.setProperty('--mouse-y', y + 'px');
+                
+                // Add glow effect
+                const glow = `radial-gradient(200px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.1), transparent)`;
+                card.style.background = `${glow}, var(--bg-card)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'var(--bg-card)';
+            });
+        });
+
+        // Typewriter effect for hero title
+        this.initTypewriter();
+        
+        // Counter animation for stats
+        this.initCounters();
+        
+        // Loading animations
+        this.initLoadingAnimations();
+    }
+
+    initTypewriter() {
+        const heroTitle = document.querySelector('.hero-title');
+        if (!heroTitle) return;
+        
+        const originalText = heroTitle.innerHTML;
+        heroTitle.innerHTML = '';
+        
+        let i = 0;
+        const typeSpeed = 50;
+        
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                heroTitle.innerHTML = originalText.slice(0, i + 1);
+                i++;
+                setTimeout(typeWriter, typeSpeed);
+            }
+        };
+        
+        // Start typewriter after page load
+        setTimeout(typeWriter, 1000);
+    }
+
+    initCounters() {
+        const counters = document.querySelectorAll('.stat-number, .metric-number');
         
         counters.forEach(counter => {
             const target = parseInt(counter.textContent.replace(/\D/g, ''));
-            const suffix = counter.textContent.replace(/[\d.]/g, '');
             let current = 0;
             const increment = target / 100;
+            const suffix = counter.textContent.replace(/\d/g, '');
             
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.textContent = Math.floor(current) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target + suffix;
                 }
-                counter.textContent = Math.floor(current) + suffix;
-            }, 20);
+            };
+            
+            // Trigger when element is visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(counter);
         });
     }
-    
-    // Trigger counter animation when hero stats are in view
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
-                }
+
+    initLoadingAnimations() {
+        // Add loading state to buttons
+        document.querySelectorAll('.service-btn, .form-submit').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (btn.classList.contains('loading')) return;
+                
+                btn.classList.add('loading');
+                const originalText = btn.textContent;
+                btn.textContent = 'Loading...';
+                
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.textContent = originalText;
+                }, 2000);
             });
         });
-        
-        statsObserver.observe(heroStats);
     }
-}
 
-// Tech ecosystem interactive functionality
-function initializeTechEcosystem() {
-    const techNodes = document.querySelectorAll('.tech-node');
-    const centralHub = document.querySelector('.central-hub');
-    
-    techNodes.forEach(node => {
-        node.addEventListener('mouseenter', () => {
-            // Highlight connected elements
-            const service = node.getAttribute('data-service');
-            if (service && centralHub) {
-                centralHub.style.transform = 'translate(-50%, -50%) scale(1.1)';
-                centralHub.style.boxShadow = '0 25px 50px -12px rgba(79, 70, 229, 0.4)';
+    preloadAnimations() {
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            .animate-in {
+                opacity: 1;
+                transform: translateY(0);
+                transition: all 0.6s ease;
             }
             
-            // Show service info (you can expand this)
-            showServiceTooltip(node, service);
-        });
-        
-        node.addEventListener('mouseleave', () => {
-            if (centralHub) {
-                centralHub.style.transform = 'translate(-50%, -50%) scale(1)';
-                centralHub.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            .services-section:not(.animate-in),
+            .about-section:not(.animate-in),
+            .portfolio-section:not(.animate-in),
+            .contact-section:not(.animate-in) {
+                opacity: 0;
+                transform: translateY(50px);
             }
-            hideServiceTooltip();
-        });
-        
-        node.addEventListener('click', () => {
-            // Navigate to corresponding service section
-            const service = node.getAttribute('data-service');
-            if (service) {
-                const serviceSection = document.getElementById('services');
-                if (serviceSection) {
-                    serviceSection.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Activate corresponding tab
-                    setTimeout(() => {
-                        const tabButton = document.querySelector(`[data-tab="${service}"]`) || 
-                                         document.querySelector('[data-tab="cybersecurity"]');
-                        if (tabButton) {
-                            tabButton.click();
-                        }
-                    }, 500);
+            
+            .service-card:not(.animate-in),
+            .portfolio-item:not(.animate-in),
+            .highlight-item:not(.animate-in),
+            .visual-card:not(.animate-in) {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            
+            @media (prefers-reduced-motion: reduce) {
+                .animate-in,
+                .service-card,
+                .portfolio-item,
+                .highlight-item,
+                .visual-card {
+                    opacity: 1;
+                    transform: none;
                 }
             }
-        });
-    });
-}
-
-// Service tooltip functionality
-function showServiceTooltip(element, service) {
-    const tooltip = document.getElementById('service-tooltip') || createServiceTooltip();
-    
-    const serviceInfo = {
-        cybersecurity: {
-            title: 'Cybersecurity Solutions',
-            description: '24/7 SOC operations, threat detection, and security compliance'
-        },
-        ai: {
-            title: 'AI & Machine Learning',
-            description: 'Business intelligence, process automation, and custom AI solutions'
-        },
-        healthcare: {
-            title: 'Healthcare Technology',
-            description: 'HIPAA-compliant HMS, telemedicine, and clinical decision support'
-        },
-        cloud: {
-            title: 'Cloud Solutions',
-            description: 'Cloud migration, architecture design, and optimization services'
-        },
-        devops: {
-            title: 'DevOps & CI/CD',
-            description: 'Continuous integration, deployment pipelines, and automation'
-        },
-        networking: {
-            title: 'Network Solutions',
-            description: 'Enterprise networking, security, and infrastructure design'
-        },
-        analytics: {
-            title: 'Data Analytics',
-            description: 'Business intelligence, reporting, and predictive analytics'
-        }
-    };
-    
-    const info = serviceInfo[service] || serviceInfo.cybersecurity;
-    tooltip.innerHTML = `
-        <div class="tooltip-content">
-            <h4>${info.title}</h4>
-            <p>${info.description}</p>
-        </div>
-    `;
-    
-    // Position tooltip
-    const rect = element.getBoundingClientRect();
-    tooltip.style.left = (rect.left + rect.width / 2) + 'px';
-    tooltip.style.top = (rect.bottom + 10) + 'px';
-    tooltip.style.opacity = '1';
-    tooltip.style.transform = 'translateX(-50%) translateY(0)';
-}
-
-function hideServiceTooltip() {
-    const tooltip = document.getElementById('service-tooltip');
-    if (tooltip) {
-        tooltip.style.opacity = '0';
-        tooltip.style.transform = 'translateX(-50%) translateY(-10px)';
+        `;
+        document.head.appendChild(style);
     }
-}
 
-function createServiceTooltip() {
-    const tooltip = document.createElement('div');
-    tooltip.id = 'service-tooltip';
-    tooltip.style.cssText = `
-        position: fixed;
-        z-index: 10000;
-        background: rgba(31, 41, 55, 0.95);
-        backdrop-filter: blur(10px);
-        color: white;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        max-width: 250px;
-        opacity: 0;
-        transform: translateX(-50%) translateY(-10px);
-        transition: all 0.3s ease-out;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        pointer-events: none;
-    `;
-    
-    document.body.appendChild(tooltip);
-    return tooltip;
-}
-
-// Scroll to top functionality
-function initializeScrollToTop() {
-    // Create scroll to top button
-    const scrollButton = document.createElement('button');
-    scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    scrollButton.className = 'scroll-to-top';
-    scrollButton.style.cssText = `
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 3rem;
-        height: 3rem;
-        background: linear-gradient(135deg, #4F46E5, #06B6D4);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        opacity: 0;
-        transform: translateY(100px);
-        transition: all 0.3s ease-out;
-        z-index: 1000;
-        font-size: 1rem;
-    `;
-    
-    scrollButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    scrollButton.addEventListener('mouseenter', () => {
-        scrollButton.style.transform = 'translateY(0) scale(1.1)';
-    });
-    
-    scrollButton.addEventListener('mouseleave', () => {
-        scrollButton.style.transform = 'translateY(0) scale(1)';
-    });
-    
-    document.body.appendChild(scrollButton);
-    
-    // Show/hide scroll button based on scroll position
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 500) {
-            scrollButton.style.opacity = '1';
-            scrollButton.style.transform = 'translateY(0)';
+    animateServiceCard(card, action) {
+        if (action === 'enter') {
+            card.style.transform = 'translateY(-8px) scale(1.02)';
+            
+            // Animate icon
+            const icon = card.querySelector('.icon-shape');
+            if (icon) {
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+            }
+            
+            // Animate features
+            const features = card.querySelectorAll('.service-features li');
+            features.forEach((feature, index) => {
+                setTimeout(() => {
+                    feature.style.transform = 'translateX(5px)';
+                    feature.style.color = 'var(--text-primary)';
+                }, index * 50);
+            });
         } else {
-            scrollButton.style.opacity = '0';
-            scrollButton.style.transform = 'translateY(100px)';
+            card.style.transform = '';
+            
+            const icon = card.querySelector('.icon-shape');
+            if (icon) {
+                icon.style.transform = '';
+            }
+            
+            const features = card.querySelectorAll('.service-features li');
+            features.forEach(feature => {
+                feature.style.transform = '';
+                feature.style.color = '';
+            });
         }
-    });
-}
-
-// Performance optimization
-function optimizePerformance() {
-    // Lazy load images
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-    
-    // Preload critical resources
-    const criticalResources = [
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'
-    ];
-    
-    criticalResources.forEach(resource => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'style';
-        link.href = resource;
-        document.head.appendChild(link);
-    });
-}
-
-// Call performance optimization
-optimizePerformance();
-
-// Utility functions
-const utils = {
-    // Debounce function for performance
-    debounce: function(func, wait, immediate) {
-        let timeout;
-        return function executedFunction() {
-            const context = this;
-            const args = arguments;
-            const later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func.apply(context, args);
-        };
-    },
-    
-    // Throttle function for scroll events
-    throttle: function(func, limit) {
-        let lastFunc;
-        let lastRan;
-        return function() {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
-                func.apply(context, args);
-                lastRan = Date.now();
-            } else {
-                clearTimeout(lastFunc);
-                lastFunc = setTimeout(function() {
-                    if ((Date.now() - lastRan) >= limit) {
-                        func.apply(context, args);
-                        lastRan = Date.now();
-                    }
-                }, limit - (Date.now() - lastRan));
-            }
-        };
-    },
-    
-    // Check if element is in viewport
-    isInViewport: function(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
     }
-};
 
-// Error handling
-window.addEventListener('error', function(e) {
-    console.error('JavaScript error:', e.error);
-    // You could send error reports to your analytics service here
+    showProjectModal(item) {
+        // Create modal for project details
+        const modal = document.createElement('div');
+        modal.className = 'project-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.3s ease;
+        `;
+        
+        const modalContent = document.createElement('div');
+        modalContent.style.cssText = `
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+        `;
+        
+        const category = item.querySelector('.project-category').textContent;
+        const title = item.querySelector('h3').textContent;
+        const description = item.querySelector('p').textContent;
+        
+        modalContent.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-lg);">
+                <div>
+                    <div style="color: var(--primary-color); font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--space-xs);">${category}</div>
+                    <h2 style="font-size: var(--font-size-2xl); margin: 0;">${title}</h2>
+                </div>
+                <button class="modal-close" style="background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer;">×</button>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">${description}</p>
+            <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                <button style="background: var(--gradient-primary); color: var(--text-primary); border: none; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-lg); font-weight: 600; cursor: pointer;">View Project</button>
+                <button style="background: transparent; color: var(--primary-color); border: 1px solid var(--primary-color); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-lg); font-weight: 600; cursor: pointer;">Source Code</button>
+            </div>
+        `;
+        
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+        
+        // Animate in
+        setTimeout(() => {
+            modal.style.opacity = '1';
+            modalContent.style.transform = 'translateY(0)';
+        }, 10);
+        
+        // Close modal
+        const closeModal = () => {
+            modal.style.opacity = '0';
+            modalContent.style.transform = 'translateY(50px)';
+            setTimeout(() => {
+                document.body.removeChild(modal);
+            }, 300);
+        };
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        modalContent.querySelector('.modal-close').addEventListener('click', closeModal);
+        
+        // ESC key to close
+        const escHandler = (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escHandler);
+            }
+        };
+        document.addEventListener('keydown', escHandler);
+    }
+
+    createRippleEffect(e) {
+        const button = e.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        `;
+        
+        // Add ripple animation
+        if (!document.querySelector('#ripple-styles')) {
+            const style = document.createElement('style');
+            style.id = 'ripple-styles';
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+        button.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    }
+
+    handleFormSubmit(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.form-submit');
+        
+        // Show loading state
+        submitBtn.classList.add('loading');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>Sending...</span><div class="animate-spin">⟳</div>';
+        
+        // Simulate form submission
+        setTimeout(() => {
+            submitBtn.classList.remove('loading');
+            submitBtn.innerHTML = '<span>Message Sent!</span><div>✓</div>';
+            submitBtn.style.background = 'var(--success-color)';
+            
+            // Show success message
+            this.showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button after delay
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+            }, 3000);
+        }, 2000);
+    }
+
+    showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            color: var(--text-primary);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-lg);
+            border: 1px solid ${type === 'success' ? 'var(--success-color)' : 'rgba(255, 255, 255, 0.1)'};
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            max-width: 300px;
+            box-shadow: var(--shadow-xl);
+        `;
+        
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 10);
+        
+        // Remove after delay
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 5000);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new ZainTechnologies();
 });
 
-// Service Worker registration for PWA (if needed)
+// Performance optimization
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(function(err) {
-                console.log('ServiceWorker registration failed');
-            });
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {
+            // Service worker registration failed
+        });
     });
 }
 
-// Export functions for external use (if needed)
-window.ZainTech = {
-    showNotification,
-    utils
-};
+// Export for potential module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = ZainTechnologies;
+}

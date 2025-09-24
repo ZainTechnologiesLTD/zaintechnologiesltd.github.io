@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain Technologies Ltd - Connecting Ideas, Empowering Progress</title>
+    <meta name="description" content="Leading IT solutions provider specializing in cutting-edge technology, cybersecurity, AI, networking, software development, and digital transformation services in Bangladesh.">
+    <meta name="keywords" content="IT Solutions, Cybersecurity, AI, Software Development, Networking, Digital Transformation, ERP, eCommerce, DevOps, Bangladesh">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property=                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>ERP Systems</h3>
+                    <p>Comprehensive Enterprise Resource Planning solutions to streamline business operations and improve efficiency.</p>
+                    <ul class="service-features">
+                        <li>Custom ERP Development</li>
+                        <li>ERP Implementation & Integration</li>
+                        <li>Business Process Optimization</li>
+                        <li>Financial Management Systems</li>
+                        <li>Inventory & Supply Chain Management</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">🚀</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Strategic guidance and implementation to digitize your business processes and operations across all industries.</p>
+                    <ul class="service-features">
+                        <li>Process Automation</li>
+                        <li>Digital Strategy Consulting</li>
+                        <li>Technology Assessment</li>
+                        <li>Change Management</li>
+                        <li>Staff Training & Adoption</li>
+                    </ul>
+                </div>
+            </div>ntent="Zain Technologies Ltd - Connecting Ideas, Empowering Progress">
+    <meta property="og:description" content="Leading IT solutions provider specializing in cutting-edge technology, cybersecurity, AI, networking, and software development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zaintechnologiesltd.github.io">
+    <meta property="og:image" content="https://zaintechnologiesltd.github.io/assets/images/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --dark-bg: #0f172a;
+            --darker-bg: #020617;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: rgba(59, 130, 246, 0.1);
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-brand: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1e40af 100%);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #7c3aed 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            --backdrop-blur: blur(16px);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.15) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%), linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-brand);
+            color: white;
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl), 0 0 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-2xl), 0 0 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Client Portal Section */
+        .portal-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portal-card {
+            background: var(--dark-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-3px);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--dark-bg);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--card-bg);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hidden sections for SPA behavior */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        #home.active {
+            display: block;
+        }
+
+        /* Modern Utility Classes */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border: 1px solid var(--border-color);
+        }
+
+        .shadow-glow {
+            box-shadow: var(--shadow-xl), 0 0 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .gradient-text {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-border {
+            position: relative;
+        }
+
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            padding: 1px;
+            background: var(--gradient-brand);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        /* Enhanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: var(--shadow-lg), 0 0 20px rgba(37, 99, 235, 0.3); }
+            50% { box-shadow: var(--shadow-xl), 0 0 30px rgba(37, 99, 235, 0.5); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <svg class="logo" width="200" height="60" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#1e3a8a"/>
+                            <stop offset="50%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#ea580c"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Z Shape -->
+                    <path d="M50 30 L150 30 L150 45 L80 45 L150 75 L150 90 L50 90 L50 75 L120 75 L50 45 Z" fill="url(#logoGradient)"/>
+                    <!-- C Shape --> 
+                    <path d="M170 30 C190 30 210 40 210 60 C210 80 190 90 170 90 L160 90 L160 75 L170 75 C180 75 185 70 185 60 C185 50 180 45 170 45 L160 45 L160 30 Z" fill="url(#logoGradient)"/>
+                    <!-- Company Name -->
+                    <text x="50" y="120" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">ZAIN TECHNOLOGIES LTD</text>
+                    <line x1="50" y1="125" x2="350" y2="125" stroke="#ea580c" stroke-width="2"/>
+                    <text x="50" y="140" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#ea580c">Connecting Ideas Empowering Progress</text>
+                </svg>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                <li><a href="#services" class="nav-link" onclick="showSection('services')">Services</a></li>
+                <li><a href="#portal" class="nav-link" onclick="showSection('portal')">Client Portal</a></li>
+                <li><a href="#about" class="nav-link" onclick="showSection('about')">About</a></li>
+                <li><a href="#contact" class="nav-link" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section-content active">
+        <div class="hero">
+            <div class="hero-content">
+                <svg class="hero-logo" width="300" height="100" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2rem; filter: drop-shadow(0 10px 30px rgba(30, 58, 138, 0.3));">
+                    <defs>
+                        <linearGradient id="heroLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#f8fafc"/>
+                            <stop offset="100%" stop-color="#ea580c"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Z Shape -->
+                    <path d="M50 30 L150 30 L150 45 L80 45 L150 75 L150 90 L50 90 L50 75 L120 75 L50 45 Z" fill="url(#heroLogoGradient)"/>
+                    <!-- C Shape -->
+                    <path d="M170 30 C190 30 210 40 210 60 C210 80 190 90 170 90 L160 90 L160 75 L170 75 C180 75 185 70 185 60 C185 50 180 45 170 45 L160 45 L160 30 Z" fill="url(#heroLogoGradient)"/>
+                    <!-- Company Name -->
+                    <text x="50" y="120" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#ffffff">ZAIN TECHNOLOGIES LTD</text>
+                    <line x1="50" y1="125" x2="350" y2="125" stroke="#ea580c" stroke-width="2"/>
+                    <text x="50" y="140" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#ea580c">Connecting Ideas Empowering Progress</text>
+                </svg>
+                <h1>Leading IT Solutions Provider in Bangladesh</h1>
+                <p>Delivering cutting-edge technology solutions including networking, cybersecurity, AI, software development, and digital transformation services. Your trusted technology partner for business excellence.</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary animate-pulse-glow" onclick="showSection('services')">Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary" onclick="showSection('contact')">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Our Services</h2>
+            
+            <div class="services-grid">
+                <div class="service-card animate-float">
+                    <div class="service-icon">💻</div>
+                    <h3>Custom Software Development</h3>
+                    <p>End-to-end custom software solutions from web applications to enterprise systems using cutting-edge technologies and modern development practices.</p>
+                    <ul class="service-features">
+                        <li>Full-Stack Web Development</li>
+                        <li>Mobile App Development (iOS/Android)</li>
+                        <li>Enterprise Software Solutions</li>
+                        <li>API & Microservices Architecture</li>
+                        <li>Legacy System Modernization</li>
+                        <li>Software Maintenance & Support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Networking & Infrastructure</h3>
+                    <p>Enterprise-grade networking solutions with premium vendor support for Cisco, Juniper, Huawei, and other leading brands.</p>
+                    <ul class="service-features">
+                        <li>Network Design & Implementation</li>
+                        <li>Cisco & Juniper Solutions</li>
+                        <li>Infrastructure Optimization</li>
+                        <li>Performance Monitoring</li>
+                        <li>24/7 Network Support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions to protect your digital assets and ensure compliance.</p>
+                    <ul class="service-features">
+                        <li>Security Audits</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance Management</li>
+                        <li>Identity & Access Management</li>
+                        <li>Security Training</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI & Data Analytics</h3>
+                    <p>Advanced AI solutions and data analytics to transform your business intelligence and automate decision-making processes.</p>
+                    <ul class="service-features">
+                        <li>Machine Learning Solutions</li>
+                        <li>Business Intelligence & BI</li>
+                        <li>Predictive Analytics</li>
+                        <li>AI-Powered Automation</li>
+                        <li>Data Visualization & Reporting</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">🛠️</div>
+                    <h3>IT Support & Maintenance</h3>
+                    <p>Reliable technical support and maintenance services to keep your systems running smoothly.</p>
+                    <ul class="service-features">
+                        <li>24/7 Technical Support</li>
+                        <li>System Monitoring</li>
+                        <li>Regular Maintenance</li>
+                        <li>Performance Optimization</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">�</div>
+                    <h3>eCommerce Solutions</h3>
+                    <p>Complete eCommerce platform development with secure payment integration and modern shopping experiences.</p>
+                    <ul class="service-features">
+                        <li>Custom eCommerce Development</li>
+                        <li>Payment Gateway Integration</li>
+                        <li>Mobile Commerce Solutions</li>
+                        <li>Inventory Management Systems</li>
+                        <li>Digital Marketing Integration</li>
+                    </ul>
+                </div>
+
+                <div class="service-card animate-float">
+                    <div class="service-icon">⚙️</div>
+                    <h3>DevOps & Cloud Solutions</h3>
+                    <p>Streamline your development lifecycle with automated CI/CD pipelines and scalable cloud infrastructure.</p>
+                    <ul class="service-features">
+                        <li>CI/CD Pipeline Setup</li>
+                        <li>Cloud Migration & Management</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Container Orchestration</li>
+                        <li>Monitoring & Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">�🚀</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Strategic guidance and implementation to digitize your business processes and operations.</p>
+                    <ul class="service-features">
+                        <li>Process Automation</li>
+                        <li>Digital Strategy Consulting</li>
+                        <li>Technology Assessment</li>
+                        <li>Change Management</li>
+                        <li>Staff Training & Adoption</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Portal Section -->
+    <section id="portal" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Client Portal</h2>
+            <div class="portal-section">
+                <h3>Access Your Services</h3>
+                <p>Secure access to project updates, documentation, support tickets, and service management tools.</p>
+                
+                <div class="portal-grid">
+                    <div class="portal-card" onclick="alert('Login functionality would be implemented here')">
+                        <div class="service-icon">👤</div>
+                        <h4>Client Login</h4>
+                        <p>Access your account and project dashboard</p>
+                    </div>
+                    
+                    <div class="portal-card" onclick="alert('Support functionality would be implemented here')">
+                        <div class="service-icon">🎫</div>
+                        <h4>Support Tickets</h4>
+                        <p>Submit and track support requests</p>
+                    </div>
+                    
+                    <div class="portal-card" onclick="alert('Project management functionality would be implemented here')">
+                        <div class="service-icon">📋</div>
+                        <h4>Project Management</h4>
+                        <p>Track project progress and milestones</p>
+                    </div>
+                    
+                    <div class="portal-card" onclick="alert('Documentation functionality would be implemented here')">
+                        <div class="service-icon">📚</div>
+                        <h4>Documentation</h4>
+                        <p>Access technical documentation and guides</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-content">
+        <div class="section">
+            <h2 class="section-title">About Zain Technologies</h2>
+            <div class="portal-section">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                    Zain Technologies Ltd is a leading IT solutions provider licensed under the Companies Act 1994, delivering comprehensive technology services across Bangladesh and beyond. We specialize in networking infrastructure, cybersecurity, AI & data analytics, custom software development, eCommerce solutions, DevOps, data center services, ERP systems, and healthcare technology. Our mission is connecting ideas and empowering progress through innovative digital transformation.
+                </p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>Connecting ideas and empowering progress by delivering cutting-edge technology solutions that enhance business productivity, security, and sustainable growth.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">👁️</div>
+                        <h3>Our Vision</h3>
+                        <p>To be the leading technology partner for businesses seeking innovative and reliable digital transformation solutions.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">⭐</div>
+                        <h3>Our Values</h3>
+                        <p>Innovation, integrity, excellence, and customer satisfaction are at the core of everything we do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-content">
+        <div class="section">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <h3 style="margin-bottom: 1.5rem;">Contact Us</h3>
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interest</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="software-development">Custom Software Development</option>
+                            <option value="cloud-solutions">Cloud Solutions</option>
+                            <option value="cybersecurity">Cybersecurity</option>
+                            <option value="data-analytics">Data Analytics</option>
+                            <option value="it-support">IT Support & Maintenance</option>
+                            <option value="digital-transformation">Digital Transformation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary animate-pulse-glow">Send Message</button>
+                </form>
+                
+                <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4>📧 Email</h4>
+                        <p>info@zaintechnologiesltd.com<br>support@zaintechnologiesltd.com</p>
+                    </div>
+                    <div>
+                        <h4>📞 Phone</h4>
+                        <p>+880 1XXX-XXXXXX<br>+880 2XXXX-XXXX</p>
+                    </div>
+                    <div>
+                        <h4>📍 Address</h4>
+                        <p>Dhaka, Bangladesh<br>Registered under Companies Act 1994</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Zain Technologies Ltd</h3>
+                <p>Your trusted partner for innovative technology solutions and digital transformation.</p>
+                <p>© 2025 Zain Technologies Ltd. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">Software Development</a></li>
+                    <li><a href="#services">Cloud Solutions</a></li>
+                    <li><a href="#services">Cybersecurity</a></li>
+                    <li><a href="#services">Data Analytics</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#portal">Client Portal</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Built with modern web technologies | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Single Page Application Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            event.target.reset();
+            
+            // In a real application, you would send this data to your server
+            console.log('Form data:', data);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observeElements = () => {
+            const elements = document.querySelectorAll('.service-card, .portal-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+
+            elements.forEach(el => observer.observe(el));
+        };
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', observeElements);
+    </script>
+</body>
+</html>

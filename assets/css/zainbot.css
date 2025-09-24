@@ -1,0 +1,515 @@
+/**
+ * ZainBot Chatbot Styles
+ * Modern, accessible chatbot widget with animations
+ */
+
+.zainbot-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.zainbot-toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.zainbot-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 123, 255, 0.4);
+}
+
+.zainbot-icon {
+  transition: transform 0.3s ease;
+}
+
+.zainbot-toggle:hover .zainbot-icon {
+  transform: scale(1.1);
+}
+
+.zainbot-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.zainbot-chat {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transform: scale(0.8) translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.zainbot-chat--open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.zainbot-header {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zainbot-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.zainbot-avatar {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zainbot-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.zainbot-status {
+  font-size: 12px;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zainbot-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #28a745;
+  border-radius: 50%;
+  animation: breathe 2s infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.zainbot-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.zainbot-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.zainbot-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f8f9fa;
+  scroll-behavior: smooth;
+}
+
+.zainbot-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.zainbot-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.zainbot-messages::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.zainbot-message {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.zainbot-message--user {
+  flex-direction: row-reverse;
+}
+
+.zainbot-message--user .zainbot-message-content {
+  background: #007bff;
+  color: white;
+  margin-left: 40px;
+}
+
+.zainbot-message--bot .zainbot-message-content {
+  background: white;
+  margin-right: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.zainbot-message-avatar {
+  width: 28px;
+  height: 28px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.zainbot-message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.zainbot-message-text {
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.zainbot-message-text strong {
+  font-weight: 600;
+}
+
+.zainbot-message-text em {
+  font-style: italic;
+}
+
+.zainbot-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.zainbot-action-btn {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+  border: 1px solid rgba(0, 123, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.zainbot-action-btn:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.zainbot-message-time {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.zainbot-quick-actions {
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.zainbot-quick-btn {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.zainbot-quick-btn:hover {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.zainbot-input-area {
+  padding: 16px;
+  background: white;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.zainbot-input-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.zainbot-input-container input {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.zainbot-input-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.zainbot-send {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.zainbot-send:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.zainbot-send:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.zainbot-typing {
+  display: none;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.zainbot-typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6c757d;
+  margin: 0 2px;
+  animation: typing 1.4s infinite;
+}
+
+.zainbot-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.zainbot-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.zainbot-footer {
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.zainbot-powered {
+  font-size: 11px;
+  color: #6c757d;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .zainbot-widget {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .zainbot-chat {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 100px);
+    right: -10px;
+    bottom: 70px;
+  }
+  
+  .zainbot-toggle {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .zainbot-message-content {
+    max-width: 85%;
+  }
+  
+  .zainbot-actions {
+    flex-direction: column;
+  }
+  
+  .zainbot-action-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .zainbot-chat {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .zainbot-messages {
+    background: #1a202c;
+  }
+  
+  .zainbot-message--bot .zainbot-message-content {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .zainbot-input-area {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .zainbot-input-container input {
+    background: #1a202c;
+    border-color: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .zainbot-footer {
+    background: #1a202c;
+    border-color: #4a5568;
+  }
+  
+  .zainbot-quick-actions {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .zainbot-quick-btn {
+    background: #1a202c;
+    color: #a0aec0;
+    border-color: #4a5568;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .zainbot-toggle,
+  .zainbot-chat,
+  .zainbot-message,
+  .zainbot-action-btn,
+  .zainbot-send {
+    animation: none;
+    transition: none;
+  }
+  
+  .zainbot-badge {
+    animation: none;
+  }
+  
+  .zainbot-status-dot {
+    animation: none;
+  }
+  
+  .zainbot-typing span {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .zainbot-toggle {
+    border: 2px solid white;
+  }
+  
+  .zainbot-chat {
+    border: 2px solid black;
+  }
+  
+  .zainbot-message--bot .zainbot-message-content {
+    border: 1px solid black;
+  }
+}

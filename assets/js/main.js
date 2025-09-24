@@ -132,12 +132,229 @@
     el.textContent = year;
   });
 
+      // Enhanced form submission with analytics and database storage
+      const contactForm = document.querySelector('.contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const submitBtn = contactForm.querySelector('.btn--submit');
+          const originalText = submitBtn.textContent;
+          
+          // Show loading state
+          submitBtn.textContent = 'Sending...';
+          submitBtn.disabled = true;
+          
+          // Track form submission attempt
+          trackEvent('form_submit_attempt', 'engagement');
+          
+          // Collect form data
+          const formData = new FormData(contactForm);
+          const contactData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            company: formData.get('company'),
+            position: formData.get('position'),
+            interest: formData.get('interest'),
+            budget: formData.get('budget'),
+            timeline: formData.get('timeline'),
+            message: formData.get('message'),
+            consent: formData.get('consent') === 'on',
+            newsletter: formData.get('newsletter') === 'on',
+            source: 'contact_form'
+          };
+          
+          // Save to database if available
+          let contactId = null;
+          if (window.zainDB && window.zainDB.isReady()) {
+            try {
+              contactId = await window.zainDB.saveContact(contactData);
+              console.log('Contact saved to database:', contactId);
+            } catch (error) {
+              console.error('Failed to save contact:', error);
+            }
+          }
+          
+          // Simulate API call (replace with actual endpoint)
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          
+          // Show success state
+          submitBtn.textContent = 'Message Sent!';
+          submitBtn.style.background = 'var(--green-500)';
+          
+          // Track successful submission
+          trackEvent('form_submit_success', 'conversion', {
+            contactId: contactId,
+            hasPhone: !!contactData.phone,
+            hasCompany: !!contactData.company,
+            budget: contactData.budget,
+            timeline: contactData.timeline
+          });
+          
+          // Reset form after delay
+          setTimeout(() => {
+            contactForm.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            submitBtn.style.background = '';
+          }, 3000);
+        });
+      }  // Legacy form fallback
   form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    form.reset();
-    if (!form.contains(successMessage)) {
-      form.appendChild(successMessage);
+    if (event.target.id !== 'contact-form') {
+      event.preventDefault();
+      form.reset();
+      if (!form.contains(successMessage)) {
+        form.appendChild(successMessage);
+      }
+      successMessage.focus?.();
     }
-    successMessage.focus?.();
   });
+
+  // Enhanced FAQ functionality
+  const initFAQ = () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const summary = item.querySelector('summary');
+      if (summary) {
+        summary.addEventListener('click', (e) => {
+          // Close other FAQ items for better UX
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.open) {
+              otherItem.open = false;
+            }
+          });
+        });
+      }
+    });
+  };
+
+  // Smooth scroll for anchor links
+  const initSmoothScroll = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  };
+
+  // Intersection Observer for animations
+  const initScrollAnimations = () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.card, .testimonial, .faq-item, .product-showcase').forEach(el => {
+      observer.observe(el);
+    });
+  };
+
+  // Enhanced loading performance
+  const initLazyLoading = () => {
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img[data-src]');
+      images.forEach(img => {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      });
+    } else {
+      // Fallback for older browsers
+      const script = document.createElement('script');
+      script.src = 'https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver';
+      document.head.appendChild(script);
+    }
+  };
+
+  // Service Worker Registration
+  const initServiceWorker = () => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+            
+            // Handle service worker updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // Show update available notification
+                  showUpdateNotification();
+                }
+              });
+            });
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  };
+
+  // Show update notification
+  const showUpdateNotification = () => {
+    const notification = document.createElement('div');
+    notification.className = 'update-notification';
+    notification.innerHTML = `
+      <div class="update-content">
+        <p>A new version is available!</p>
+        <button class="btn btn--primary btn--sm" onclick="window.location.reload()">Update Now</button>
+        <button class="btn btn--ghost btn--sm" onclick="this.parentElement.parentElement.remove()">Later</button>
+      </div>
+    `;
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 10 seconds
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.remove();
+      }
+    }, 10000);
+  };
+
+  // Initialize enhanced features
+  initFAQ();
+  initSmoothScroll();
+  initScrollAnimations();
+  initLazyLoading();
+  initServiceWorker();
+
+  // Performance metrics (optional)
+  if ('PerformanceObserver' in window) {
+    const perfObserver = new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      entries.forEach(entry => {
+        if (entry.entryType === 'largest-contentful-paint') {
+          console.log('LCP:', entry.startTime);
+        }
+      });
+    });
+    
+    try {
+      perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+    } catch (e) {
+      // Silently handle unsupported metrics
+    }
+  }
 })();

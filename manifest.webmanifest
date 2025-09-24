@@ -7,17 +7,54 @@
   "scope": "/",
   "display": "standalone",
   "background_color": "#0b1d3a",
-  "theme_color": "#0b1d3a",
+  "theme_color": "#ff6b2c",
+  "orientation": "portrait-primary",
+  "categories": ["business", "technology", "healthcare"],
   "icons": [
     {
       "src": "assets/img/apple-touch-icon.png",
       "sizes": "256x256",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/img/logo.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/img/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with our team",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "assets/img/icon-contact.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "Explore our technology solutions",
+      "url": "/services.html",
+      "icons": [
+        {
+          "src": "assets/img/icon-services.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }

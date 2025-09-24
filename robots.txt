@@ -1,4 +1,22 @@
 User-agent: *
 Allow: /
 
+# Optimize crawling
+Crawl-delay: 1
+
+# Block unnecessary paths
+Disallow: /assets/js/
+Disallow: /assets/css/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important resources
+Allow: /assets/img/
+Allow: /manifest.webmanifest
+Allow: /service-worker.js
+
+# Sitemap location
 Sitemap: https://zaintechnologiesltd.github.io/sitemap.xml
+
+# Additional sitemaps
+Sitemap: https://zaintechnologiesltd.github.io/sitemap-images.xml

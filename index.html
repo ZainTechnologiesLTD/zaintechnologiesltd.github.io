@@ -11,6 +11,7 @@
             box-sizing: border-box;
         }
 
+        :root {
             --primary-color: #2563eb;
             --secondary-color: #1e40af;
             --accent-color: #3b82f6;
@@ -49,6 +50,7 @@
             top: 0;
             width: 100%;
             background: var(--glass-bg);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             backdrop-filter: var(--backdrop-blur);
             z-index: 1000;
             padding: 1rem 0;
@@ -446,6 +448,7 @@
         /* Modern Utility Classes */
         .glass {
             background: var(--glass-bg);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             backdrop-filter: var(--backdrop-blur);
             border: 1px solid var(--border-color);
         }
@@ -473,6 +476,7 @@
             background: var(--gradient-brand);
             border-radius: inherit;
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
             mask-composite: exclude;
         }
 

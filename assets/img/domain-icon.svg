@@ -1,0 +1,53 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="domainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891B2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Globe -->
+  <circle cx="32" cy="32" r="20" fill="url(#domainGradient)" stroke="#0E7490" stroke-width="2"/>
+  
+  <!-- Longitude lines -->
+  <ellipse cx="32" cy="32" rx="20" ry="8" fill="none" stroke="#0E7490" stroke-width="1" opacity="0.7"/>
+  <ellipse cx="32" cy="32" rx="20" ry="14" fill="none" stroke="#0E7490" stroke-width="1" opacity="0.5"/>
+  <line x1="32" y1="12" x2="32" y2="52" stroke="#0E7490" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Latitude lines -->
+  <line x1="12" y1="32" x2="52" y2="32" stroke="#0E7490" stroke-width="1" opacity="0.7"/>
+  <ellipse cx="32" cy="32" rx="14" ry="20" fill="none" stroke="#0E7490" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="32" cy="32" rx="8" ry="20" fill="none" stroke="#0E7490" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Domain extensions floating around -->
+  <g transform="translate(48,20)">
+    <rect x="-8" y="-3" width="16" height="6" rx="3" fill="white" stroke="#0891B2" stroke-width="1"/>
+    <text x="0" y="1" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0891B2">.com</text>
+  </g>
+  
+  <g transform="translate(16,20)">
+    <rect x="-6" y="-3" width="12" height="6" rx="3" fill="white" stroke="#0891B2" stroke-width="1"/>
+    <text x="0" y="1" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0891B2">.org</text>
+  </g>
+  
+  <g transform="translate(48,44)">
+    <rect x="-6" y="-3" width="12" height="6" rx="3" fill="white" stroke="#0891B2" stroke-width="1"/>
+    <text x="0" y="1" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0891B2">.net</text>
+  </g>
+  
+  <g transform="translate(16,44)">
+    <rect x="-6" y="-3" width="12" height="6" rx="3" fill="white" stroke="#0891B2" stroke-width="1"/>
+    <text x="0" y="1" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#0891B2">.io</text>
+  </g>
+  
+  <!-- DNS indicators -->
+  <circle cx="32" cy="25" r="2" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="25" cy="32" r="2" fill="#10B981">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="39" cy="32" r="2" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

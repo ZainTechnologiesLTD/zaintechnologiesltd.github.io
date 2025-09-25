@@ -2083,3 +2083,12 @@ body.theme-dark .service-card:hover {
   outline: 2px solid rgba(255, 107, 44, 0.5);
   outline-offset: 2px;
 }
+
+/* Mobile adjustments for back-to-top button to avoid chatbot overlap */
+@media (max-width: 480px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 90px; /* Position to the left of chatbot which is at right: 20px */
+    z-index: 999; /* Lower than chatbot which has z-index: 1500 */
+  }
+}
